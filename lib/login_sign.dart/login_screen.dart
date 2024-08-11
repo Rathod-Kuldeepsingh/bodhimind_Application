@@ -1,8 +1,14 @@
+
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
+// ignore: unused_import
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
@@ -14,6 +20,18 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  final _auth = Authservice();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _email.dispose();
+    _password.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +63,7 @@ class _LoginpageState extends State<Loginpage> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: TextFormField(
+                  controller: _email,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.person_outline_outlined,
@@ -66,6 +85,7 @@ class _LoginpageState extends State<Loginpage> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: TextFormField(
+                  controller: _password,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
                       Icons.fingerprint,
@@ -226,9 +246,8 @@ class _LoginpageState extends State<Loginpage> {
               padding: const EdgeInsets.all(0),
               child: Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/Homescreen");
-                  },
+                  onPressed: () =>
+                          _login(),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                   ),
@@ -261,4 +280,18 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
+  goToLogin(BuildContext context)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context)=> const Loginpage()),
+      );
+   goTohome(BuildContext context)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context)=> const Homescreen()),
+      );
+   _login()async{
+      final user = await _auth.loginUserWithEmailAndPAssword(_email.text,_password.text);
+      if(user != null){
+        //log("user is created succesful" as num);
+         goTohome(context);
+        
+      }
+    }
 }

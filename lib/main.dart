@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:shubham_test/auth/authentication_rep.dart';
@@ -14,7 +16,8 @@ import 'package:shubham_test/splash.dart';
 import 'package:flutter/material.dart';
 void main() {
    WidgetsFlutterBinding.ensureInitialized();
-   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRep()));
+   Firebase.initializeApp();
+  // Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRep()));
 
 
   runApp( MaterialApp(

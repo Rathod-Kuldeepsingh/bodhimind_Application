@@ -1,7 +1,15 @@
+import 'dart:ffi';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/auth/signup_controller.dart';
+import 'package:shubham_test/dash/h.dart';
+import 'package:shubham_test/login_sign.dart/login_screen.dart';
+import 'package:shubham_test/main.dart';
 
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
@@ -10,17 +18,35 @@ class SignScreen extends StatefulWidget {
   State<SignScreen> createState() => _SignScreenState();
 }
 
+
 class _SignScreenState extends State<SignScreen> {
+   
+   final _auth= Authservice();
+
+    final _email = TextEditingController();
+    final _password = TextEditingController();
+    final _fullname = TextEditingController();
+   final _mobile = TextEditingController();
+   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _email.dispose();
+    _password.dispose();
+    _mobile.dispose();
+    _fullname.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignupController());
-    final _formkey = GlobalKey<FormState>();
+   
+  //  final controller = Get.put(SignupController());
+    // final _formkey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Form(
-            key: _formkey,
+           // key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +74,8 @@ class _SignScreenState extends State<SignScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: TextFormField(
-                      controller: controller.fullname,
+                      controller: _fullname,
+                      // controller: controller.fullname,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.person_outline_outlined,
@@ -68,8 +95,9 @@ class _SignScreenState extends State<SignScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: TextFormField(
+                      controller:_email ,
                       keyboardType: TextInputType.emailAddress,
-                          controller: controller.email,
+                    //      controller: controller.email,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.person_outline_outlined,
@@ -89,8 +117,9 @@ class _SignScreenState extends State<SignScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: TextFormField(
+                      controller: _mobile,
                       keyboardType: TextInputType.number,
-                          controller: controller.mobile,
+                        //  controller: controller.mobile,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.person_outline_outlined,
@@ -112,8 +141,8 @@ class _SignScreenState extends State<SignScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: TextFormField(
-
-                          controller: controller.password,
+         controller: _password,
+                          //controller: controller.password,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.fingerprint,
@@ -144,11 +173,14 @@ class _SignScreenState extends State<SignScreen> {
                     child: SizedBox(
                       width: 210,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () =>
+                          _signup()
+                          /*() {
                           if(_formkey.currentState!.validate()){
                             SignupController.instance.registrationUser(controller.email.text.trim(),controller.password.text.trim());
                           }
-                        },
+
+                        }*/,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                         ),
@@ -210,5 +242,23 @@ class _SignScreenState extends State<SignScreen> {
         ),
       ),
     );
+     
   }
+  goToLogin(BuildContext context)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context)=> const Loginpage()),
+      );
+   goTohome(BuildContext context)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context)=> const Homescreen()),
+      );
+     // ignore: dead_code
+     _signup()async{
+      final user = await _auth.createUserWithEmailAndPAssword(_email.text,_password.text);
+      if(user != null){
+        // log("user is created succesful" as num);
+         goTohome(context);
+        
+      }
+    }
+   
 }
+  
