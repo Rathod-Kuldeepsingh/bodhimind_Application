@@ -7,10 +7,12 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/auth/signup_controller.dart';
+import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/login_sign.dart/login_screen.dart';
 import 'package:shubham_test/main.dart';
 
+final _formkey = GlobalKey<FormState>();
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
 
@@ -29,13 +31,26 @@ class _SignScreenState extends State<SignScreen> {
    final _mobile = TextEditingController();
    @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _email.dispose();
     _password.dispose();
     _mobile.dispose();
     _fullname.dispose();
   }
+   String? validateEmail(String? email){
+    RegExp emailRegex = RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$');
+    final isEmailValid = emailRegex.hasMatch(email??'');
+    if(!isEmailValid){
+      return 'Please Enter the a valid email';
+    }
+return null;
+
+   }
+
+
+   bool _isVisible = false;
+
   @override
   Widget build(BuildContext context) {
    
@@ -46,7 +61,7 @@ class _SignScreenState extends State<SignScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Form(
-           // key: _formkey,
+           key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,11 +83,11 @@ class _SignScreenState extends State<SignScreen> {
                   "Create your profile to start your journey. ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                 )),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: 400,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 40),
+                    padding: const EdgeInsets.all(20),
                     child: TextFormField(
                       controller: _fullname,
                       // controller: controller.fullname,
@@ -86,21 +101,22 @@ class _SignScreenState extends State<SignScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
+                          validator: (name)=> name!.length < 6 ? 'Name should be at Least 3 Characters' : null ,
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+               
                 SizedBox(
                   width: 400,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 40),
+                    padding: const EdgeInsets.all(20),
                     child: TextFormField(
                       controller:_email ,
                       keyboardType: TextInputType.emailAddress,
                     //      controller: controller.email,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
-                            Icons.person_outline_outlined,
+                            Icons.email_outlined,
                             size: 25,
                           ),
                           labelText: "  Email",
@@ -108,21 +124,22 @@ class _SignScreenState extends State<SignScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
+                          validator: validateEmail,
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+               
                 SizedBox(
                   width: 400,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 40),
+                    padding: const EdgeInsets.all(20),
                     child: TextFormField(
                       controller: _mobile,
                       keyboardType: TextInputType.number,
                         //  controller: controller.mobile,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
-                            Icons.person_outline_outlined,
+                            Icons.mobile_friendly_outlined,
                             size: 25,
                           ),
                           labelText: " Mobile Number",
@@ -130,18 +147,19 @@ class _SignScreenState extends State<SignScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
+
+                           validator: (number)=> number!.length < 10 ? 'Number should be at Least 10 digit' : null ,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+              
                 SizedBox(
                   width: 400,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 40),
+                    padding: const EdgeInsets.all(20),
                     child: TextFormField(
          controller: _password,
+         obscureText: _isVisible,
                           //controller: controller.password,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
@@ -154,13 +172,19 @@ class _SignScreenState extends State<SignScreen> {
                           borderRadius: BorderRadius.circular(32),
                         ),
                         suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
+                          onPressed: () {
+                            setState(() {
+                              _isVisible = !_isVisible;
+                            });
+                          },
+                          
+                          icon: _isVisible ? const  Icon(
                             Icons.remove_red_eye_sharp,
                             size: 20,
-                          ),
+                          ): const Icon(Icons.visibility_off),
                         ),
                       ),
+                      validator: (password)=> password!.length < 8 ? 'Contains at least 8 characters\nContains at least 1 number ' : null ,
                     ),
                   ),
                 ),
@@ -173,8 +197,10 @@ class _SignScreenState extends State<SignScreen> {
                     child: SizedBox(
                       width: 210,
                       child: ElevatedButton(
-                        onPressed: () =>
-                          _signup()
+                        onPressed: () {
+                             _formkey .currentState!.validate();
+                          _signup();
+                          }
                           /*() {
                           if(_formkey.currentState!.validate()){
                             SignupController.instance.registrationUser(controller.email.text.trim(),controller.password.text.trim());
@@ -248,7 +274,7 @@ class _SignScreenState extends State<SignScreen> {
         context, MaterialPageRoute(builder: (context)=> const Loginpage()),
       );
    goTohome(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const Homescreen()),
+        context, MaterialPageRoute(builder: (context)=> const DashboardScreen()),
       );
      // ignore: dead_code
      _signup()async{

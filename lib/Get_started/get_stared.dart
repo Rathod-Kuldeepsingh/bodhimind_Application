@@ -19,7 +19,7 @@ class _GetStartState extends State<GetStart> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 100,
+              height: 50,
             ),
             Padding(
                 padding: const EdgeInsets.all(20),

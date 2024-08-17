@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:shubham_test/auth/authentication_rep.dart';
+import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/firebase_options.dart';
 import 'package:shubham_test/login_sign.dart/login_screen.dart';
@@ -21,7 +22,7 @@ void main() {
 
 
   runApp( MaterialApp(
-    home: const Splash(),
+    home: const Loginpage(),
      routes: {
       "/Loginpage": (context) => const Loginpage(),
       "/Signpage":  (context) => const SignScreen(),
