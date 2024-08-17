@@ -1,4 +1,3 @@
-
 // ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +13,7 @@ import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
-
-
-
 final _formkey = GlobalKey<FormState>();
-
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -31,7 +26,6 @@ class _LoginpageState extends State<Loginpage> {
   final _auth = Authservice();
   final _email = TextEditingController();
   final _password = TextEditingController();
-
   @override
   void dispose() {
     super.dispose();
@@ -39,17 +33,16 @@ class _LoginpageState extends State<Loginpage> {
     _password.dispose();
   }
 
- String? validateEmail(String? email){
+  String? validateEmail(String? email) {
     RegExp emailRegex = RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$');
-    final isEmailValid = emailRegex.hasMatch(email??'');
-    if(!isEmailValid){
+    final isEmailValid = emailRegex.hasMatch(email ?? '');
+    if (!isEmailValid) {
       return 'Please Enter the a valid email';
     }
-return null;
+    return null;
+  }
 
-   }
-
- bool _isVisible = false;
+  bool _isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +51,16 @@ return null;
       body: SingleChildScrollView(
         child: SafeArea(
             child: Form(
-              key: _formkey,
-              child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+          key: _formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Padding(
                   padding: const EdgeInsets.all(20),
                   child: Lottie.asset("asset/login.json")),
               const Padding(
-                 padding: EdgeInsets.only(left: 20),
+                  padding: EdgeInsets.only(left: 20),
                   child: Text(
                     "Welcome Back !",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
@@ -95,18 +88,17 @@ return null;
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
                         )),
-                         validator: validateEmail,
+                    validator: validateEmail,
                   ),
                 ),
               ),
-                         
               SizedBox(
                 width: 400,
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextFormField(
                     controller: _password,
-                     obscureText: _isVisible,
+                    obscureText: _isVisible,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.fingerprint,
@@ -119,17 +111,21 @@ return null;
                       ),
                       suffixIcon: IconButton(
                         onPressed: () {
-                            setState(() {
-                                _isVisible = !_isVisible;
-                              });
+                          setState(() {
+                            _isVisible = !_isVisible;
+                          });
                         },
-                        icon: _isVisible? const  Icon(
-                          Icons.remove_red_eye_sharp,
-                          size: 20,
-                        ): const Icon(Icons.visibility_off),
+                        icon: _isVisible
+                            ? const Icon(
+                                Icons.remove_red_eye_sharp,
+                                size: 20,
+                              )
+                            : const Icon(Icons.visibility_off),
                       ),
                     ),
-                         validator: (password)=> password!.length < 8 ? 'Please Enter the valid Password ' : null ,
+                    validator: (password) => password!.length < 8
+                        ? 'Please Enter the valid Password '
+                        : null,
                   ),
                 ),
               ),
@@ -207,7 +203,8 @@ return null;
                                                   "   E-mail\n   Reset via E-mail Verification",
                                                   style: TextStyle(
                                                       fontSize: 15,
-                                                      fontWeight: FontWeight.w500),
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                               ),
                                             ],
@@ -239,7 +236,7 @@ return null;
                                             children: [
                                               GestureDetector(
                                                 onTap: () {
-                                                   Navigator.of(context)
+                                                  Navigator.of(context)
                                                       .push(MaterialPageRoute(
                                                     builder: (context) {
                                                       return const Mobile();
@@ -250,7 +247,8 @@ return null;
                                                   "   Mobile Numberl\n   Reset via Mobile Verification",
                                                   style: TextStyle(
                                                       fontSize: 15,
-                                                      fontWeight: FontWeight.w500),
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                               ),
                                             ],
@@ -273,9 +271,9 @@ return null;
                 child: Center(
                   child: ElevatedButton(
                     onPressed: () {
-                       _formkey .currentState!.validate();
-                            _login();
-                            },
+                      _formkey.currentState!.validate();
+                      _login();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
@@ -303,24 +301,27 @@ return null;
                   ),
                 ),
               ),
-                        ],
-                      ),
-            )),
+            ],
+          ),
+        )),
       ),
     );
   }
-  goToLogin(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const Loginpage()),
+
+  goToLogin(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Loginpage()),
       );
-   goTohome(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const DashboardScreen()),
+  goTohome(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DashboardScreen()),
       );
-   _login()async{
-      final user = await _auth.loginUserWithEmailAndPAssword(_email.text,_password.text);
-      if(user != null){
-        //log("user is created succesful" as num);
-         goTohome(context);
-        
-      }
+  _login() async {
+    final user =
+        await _auth.loginUserWithEmailAndPAssword(_email.text, _password.text);
+    if (user != null) {
+      //log("user is created succesful" as num);
+      goTohome(context);
     }
+  }
 }

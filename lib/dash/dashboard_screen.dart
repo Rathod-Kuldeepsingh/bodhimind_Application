@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/dash/h.dart';
+import 'package:shubham_test/login_sign.dart/login_screen.dart';
+import 'package:shubham_test/main.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -10,6 +15,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final _auth = Authservice();
   @override
   Widget build(BuildContext context) {
     var user = "Kuldeep";
@@ -20,21 +26,40 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(left: 10, top: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 10, top: 16),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.menu_outlined,
-                      size: 30,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 330),
-                      child: Icon(
-                        Icons.notification_add_outlined,
+                    IconButton(
+                      onPressed: () => const home_screen(),
+                      icon: const Icon(
+                        Icons.menu_outlined,
                         size: 30,
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 270),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.notification_add_outlined,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: IconButton(
+                        onPressed: () async {
+                          await _auth.signOut();
+                          goToLogin(context);
+                        },
+                        icon: const Icon(
+                          Icons.exit_to_app,
+                          size: 30,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -94,7 +119,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             height: 50,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color:const  Color.fromARGB(255, 234, 232, 232),
+                              color: const Color.fromARGB(255, 234, 232, 232),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: SizedBox(
@@ -124,26 +149,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
               )
               // five column
               ,
-               Column(
+              Column(
                 children: [
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 10,left: 20),
-                        child: Text("All Categories",style: GoogleFonts.ubuntu(textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        )),),
+                        padding: const EdgeInsets.only(top: 10, left: 20),
+                        child: Text(
+                          "All Categories",
+                          style: GoogleFonts.ubuntu(
+                              textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          )),
+                        ),
                       ),
                     ],
                   )
                 ],
               ),
-              
             ],
           ),
         ),
       ),
     );
   }
+
+  goToLogin(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Loginpage()),
+      );
+  goTohome(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Homescreen()),
+      );
 }

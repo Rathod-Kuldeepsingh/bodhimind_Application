@@ -1,6 +1,9 @@
+// ignore_for_file: unused_import
+
 import 'dart:ffi';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -11,8 +14,10 @@ import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/login_sign.dart/login_screen.dart';
 import 'package:shubham_test/main.dart';
+import 'package:shubham_test/otp_screen/otp_s2.dart';
 
 final _formkey = GlobalKey<FormState>();
+
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
 
@@ -20,48 +25,43 @@ class SignScreen extends StatefulWidget {
   State<SignScreen> createState() => _SignScreenState();
 }
 
-
 class _SignScreenState extends State<SignScreen> {
-   
-   final _auth= Authservice();
+  final _auth = Authservice();
 
-    final _email = TextEditingController();
-    final _password = TextEditingController();
-    final _fullname = TextEditingController();
-   final _mobile = TextEditingController();
-   @override
+  final _email = TextEditingController();
+  final _password = TextEditingController();
+  final _fullname = TextEditingController();
+  final _mobile = TextEditingController();
+  @override
   void dispose() {
-    
     super.dispose();
     _email.dispose();
     _password.dispose();
     _mobile.dispose();
     _fullname.dispose();
   }
-   String? validateEmail(String? email){
+
+  String? validateEmail(String? email) {
     RegExp emailRegex = RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$');
-    final isEmailValid = emailRegex.hasMatch(email??'');
-    if(!isEmailValid){
+    final isEmailValid = emailRegex.hasMatch(email ?? '');
+    if (!isEmailValid) {
       return 'Please Enter the a valid email';
     }
-return null;
+    return null;
+  }
 
-   }
-
-
-   bool _isVisible = false;
+  bool _isVisible = false;
 
   @override
   Widget build(BuildContext context) {
-   
-  //  final controller = Get.put(SignupController());
+    //  final controller = Get.put(SignupController());
     // final _formkey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Form(
-           key: _formkey,
+            key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,19 +101,20 @@ return null;
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
-                          validator: (name)=> name!.length < 6 ? 'Name should be at Least 3 Characters' : null ,
+                      validator: (name) => name!.length < 6
+                          ? 'Name should be at Least 3 Characters'
+                          : null,
                     ),
                   ),
                 ),
-               
                 SizedBox(
                   width: 400,
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextFormField(
-                      controller:_email ,
+                      controller: _email,
                       keyboardType: TextInputType.emailAddress,
-                    //      controller: controller.email,
+                      //      controller: controller.email,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.email_outlined,
@@ -124,11 +125,10 @@ return null;
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
-                          validator: validateEmail,
+                      validator: validateEmail,
                     ),
                   ),
                 ),
-               
                 SizedBox(
                   width: 400,
                   child: Padding(
@@ -136,7 +136,7 @@ return null;
                     child: TextFormField(
                       controller: _mobile,
                       keyboardType: TextInputType.number,
-                        //  controller: controller.mobile,
+                      //  controller: controller.mobile,
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.mobile_friendly_outlined,
@@ -148,19 +148,20 @@ return null;
                             borderRadius: BorderRadius.circular(32),
                           )),
 
-                           validator: (number)=> number!.length < 10 ? 'Number should be at Least 10 digit' : null ,
+                      validator: (number) => number!.length < 10
+                          ? 'Number should be at Least 10 digit'
+                          : null,
                     ),
                   ),
                 ),
-              
                 SizedBox(
                   width: 400,
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextFormField(
-         controller: _password,
-         obscureText: _isVisible,
-                          //controller: controller.password,
+                      controller: _password,
+                      obscureText: _isVisible,
+                      //controller: controller.password,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.fingerprint,
@@ -177,14 +178,17 @@ return null;
                               _isVisible = !_isVisible;
                             });
                           },
-                          
-                          icon: _isVisible ? const  Icon(
-                            Icons.remove_red_eye_sharp,
-                            size: 20,
-                          ): const Icon(Icons.visibility_off),
+                          icon: _isVisible
+                              ? const Icon(
+                                  Icons.remove_red_eye_sharp,
+                                  size: 20,
+                                )
+                              : const Icon(Icons.visibility_off),
                         ),
                       ),
-                      validator: (password)=> password!.length < 8 ? 'Contains at least 8 characters\nContains at least 1 number ' : null ,
+                      validator: (password) => password!.length < 8
+                          ? 'Contains at least 8 characters\nContains at least 1 number '
+                          : null,
                     ),
                   ),
                 ),
@@ -198,15 +202,16 @@ return null;
                       width: 210,
                       child: ElevatedButton(
                         onPressed: () {
-                             _formkey .currentState!.validate();
+                          _formkey.currentState!.validate();
                           _signup();
-                          }
-                          /*() {
+                        }
+                        /*() {
                           if(_formkey.currentState!.validate()){
                             SignupController.instance.registrationUser(controller.email.text.trim(),controller.password.text.trim());
                           }
 
-                        }*/,
+                        }*/
+                        ,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                         ),
@@ -238,7 +243,8 @@ return null;
                     child: OutlinedButton.icon(
                         onPressed: () {},
                         icon: const Image(
-                          image: AssetImage("asset/google.png"), width:30,
+                          image: AssetImage("asset/google.png"),
+                          width: 30,
                         ),
                         label: const Text(
                           "Sign With Google",
@@ -249,42 +255,60 @@ return null;
                         )),
                   ),
                 ),
-                const SizedBox(height: 30,),
-                  Center(
-                    child: TextButton(onPressed: (){
-                      Navigator.pushNamed(context,"/Loginpage");
-                    }, child: const Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: "Already have an Accounr?",style: TextStyle(color: Colors.black,fontSize: 17)),
-                          TextSpan(text: " Login",style: TextStyle(color: Colors.blue,fontSize: 17)),
-                        ]
-                      )
-                    )),
-                  )
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/Loginpage");
+                      },
+                      child: const Text.rich(TextSpan(children: [
+                        TextSpan(
+                            text: "Already have an Accounr?",
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 17)),
+                        TextSpan(
+                            text: " Login",
+                            style: TextStyle(color: Colors.blue, fontSize: 17)),
+                      ]))),
+                )
               ],
             ),
           ),
         ),
       ),
     );
-     
   }
-  goToLogin(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const Loginpage()),
+
+  goToLogin(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Loginpage()),
       );
-   goTohome(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const DashboardScreen()),
+  goTohome(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DashboardScreen()),
       );
-     // ignore: dead_code
-     _signup()async{
-      final user = await _auth.createUserWithEmailAndPAssword(_email.text,_password.text);
-      if(user != null){
-        // log("user is created succesful" as num);
-         goTohome(context);
-        
-      }
+  // ignore: dead_code
+  _signup() async {
+    final user =
+        await _auth.createUserWithEmailAndPAssword(_email.text, _password.text);
+    if (user != null) {
+      // log("user is created succesful" as num);
+      goTohome(context);
+
+      addUserDetails(_fullname.text.trim(), int.parse(_mobile.text.trim()),
+          _email.text.trim(), _password.text.trim());
     }
-   
+  }
+
+  Future<void> addUserDetails(
+      String fullname, int number, String email, String password) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'Fullname': fullname,
+      'Mobile Number': number,
+      'email': email,
+      'password': password,
+    });
+  }
 }
-  
