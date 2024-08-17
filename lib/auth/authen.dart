@@ -50,5 +50,5 @@ class Authservice {
   signInWithEmailAndPassword(
       {required String email,
       required String password,
-      required String fullname}) {}
+    }) {}
 }

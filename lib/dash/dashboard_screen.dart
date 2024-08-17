@@ -31,14 +31,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () => const home_screen(),
+                      onPressed: (){
+                       const Divider(
+                        
+                       );
+                      },
                       icon: const Icon(
                         Icons.menu_outlined,
                         size: 30,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 270),
+                      padding: const EdgeInsets.only(left: 250),
                       child: IconButton(
                         onPressed: () {},
                         icon: const Icon(

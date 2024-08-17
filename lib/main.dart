@@ -2,7 +2,6 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:shubham_test/auth/authentication_rep.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/firebase_options.dart';
@@ -22,7 +21,7 @@ void main() {
   // Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRep()));
 
   runApp(MaterialApp(
-    home: const Splash(),
+    home: const DashboardScreen(),
     routes: {
       "/Loginpage": (context) => const Loginpage(),
       "/Signpage": (context) => const SignScreen(),

@@ -13,7 +13,7 @@ import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
-final _formkey = GlobalKey<FormState>();
+final _formke1 = GlobalKey<FormState>();
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -51,7 +51,7 @@ class _LoginpageState extends State<Loginpage> {
       body: SingleChildScrollView(
         child: SafeArea(
             child: Form(
-          key: _formkey,
+          key: _formke1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,7 +271,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      _formkey.currentState!.validate();
+                      _formke1.currentState!.validate();
                       _login();
                     },
                     style: ElevatedButton.styleFrom(
