@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shubham_test/onboarding_page.dart';
+import 'package:shubham_test/onscreen/onboarding_page.dart';
 import 'package:lottie/lottie.dart';
 import "package:simple_gradient_text/simple_gradient_text.dart";
 

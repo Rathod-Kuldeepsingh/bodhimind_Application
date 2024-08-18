@@ -1,4 +1,4 @@
-package com.example.shubham_test
+package com.bodhimind.test
 
 import io.flutter.embedding.android.FlutterActivity
 

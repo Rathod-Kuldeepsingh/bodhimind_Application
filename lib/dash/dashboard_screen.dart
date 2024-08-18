@@ -4,7 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/dash/h.dart';
-import 'package:shubham_test/login_sign.dart/login_screen.dart';
+import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/main.dart';
 
 class DashboardScreen extends StatefulWidget {

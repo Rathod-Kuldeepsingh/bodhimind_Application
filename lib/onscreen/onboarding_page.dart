@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/Get_started/get_stared.dart';
-import 'package:shubham_test/on_screen1.dart';
+import 'package:shubham_test/onscreen/on_screen1.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'package:shubham_test/on_screen2.dart';
-import 'package:shubham_test/on_screen3.dart';
+import 'package:shubham_test/onscreen/on_screen2.dart';
+import 'package:shubham_test/onscreen/on_screen3.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:shubham_test/on_screen4.dart';
-import 'package:shubham_test/on_screen5.dart';
-import 'package:shubham_test/on_screen6.dart';
+import 'package:shubham_test/onscreen/on_screen4.dart';
+import 'package:shubham_test/onscreen/on_screen5.dart';
+import 'package:shubham_test/onscreen/on_screen6.dart';
 
 class OnboardigPage extends StatefulWidget {
   const OnboardigPage({super.key});

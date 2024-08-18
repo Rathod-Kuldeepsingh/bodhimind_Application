@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAufluiioW5d1Ix2PaX4DorwBTtplNf8W8',
-    appId: '1:926766537164:android:b1a0f099a4cba959372569',
-    messagingSenderId: '926766537164',
-    projectId: 'test1-bb0b6',
-    storageBucket: 'test1-bb0b6.appspot.com',
+    apiKey: 'AIzaSyAjucwVpcnGWJnLXz3lxCIVPJOR_1DhIDs',
+    appId: '1:893030457264:android:458d6378e0fdcae76a4075',
+    messagingSenderId: '893030457264',
+    projectId: 'bodhimind-a479c',
+    storageBucket: 'bodhimind-a479c.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD5BEbvXjjhoUNAVJI51SWdLzKwik-Yq20',
-    appId: '1:926766537164:ios:5b8c584d4d87b508372569',
-    messagingSenderId: '926766537164',
-    projectId: 'test1-bb0b6',
-    storageBucket: 'test1-bb0b6.appspot.com',
+    apiKey: 'AIzaSyBwDX6eANJuY_AdIWreGuYX5OXsa6DofZw',
+    appId: '1:893030457264:ios:f59c54827cf864366a4075',
+    messagingSenderId: '893030457264',
+    projectId: 'bodhimind-a479c',
+    storageBucket: 'bodhimind-a479c.appspot.com',
     iosBundleId: 'com.example.shubhamTest',
   );
 }

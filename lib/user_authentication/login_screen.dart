@@ -1,15 +1,18 @@
 // ignore: unnecessary_import
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 // ignore: unused_import
 import 'package:get/route_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
+import 'package:shubham_test/demo/auth.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
@@ -23,16 +26,29 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  final _auth = Authservice();
+
+
+  final AuthService _authService = AuthService();// google authentication
+
+
+  
+  final _auth = Authservice();// email and password authentication
+
+
+  // its variable to take data from user 
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+
   @override
   void dispose() {
     super.dispose();
     _email.dispose();
     _password.dispose();
   }
+ 
 
+   //validation email 
   String? validateEmail(String? email) {
     RegExp emailRegex = RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$');
     final isEmailValid = emailRegex.hasMatch(email ?? '');
@@ -42,6 +58,7 @@ class _LoginpageState extends State<Loginpage> {
     return null;
   }
 
+  // visible password function
   bool _isVisible = false;
 
   @override
@@ -51,7 +68,7 @@ class _LoginpageState extends State<Loginpage> {
       body: SingleChildScrollView(
         child: SafeArea(
             child: Form(
-          key: _formke1,
+          key: _formke1,// validation form key check valid data in form
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +94,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextFormField(
-                    controller: _email,
+                    controller: _email, // take data form user
                     decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.person_outline_outlined,
@@ -97,8 +114,8 @@ class _LoginpageState extends State<Loginpage> {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextFormField(
-                    controller: _password,
-                    obscureText: _isVisible,
+                    controller: _password,// take data form user
+                    obscureText: _isVisible, // password visible function
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.fingerprint,
@@ -136,7 +153,7 @@ class _LoginpageState extends State<Loginpage> {
                 alignment: Alignment.centerRight, // for use to right side align
                 child: TextButton(
                     onPressed: () {
-                      showModalBottomSheet(
+                      showModalBottomSheet( // for show model
                           context: context,
                           builder: (context) => Container(
                               width: 450,
@@ -287,6 +304,34 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
               ),
+                const SizedBox(
+                height: 20,
+              ),
+                Center(
+                  child: SizedBox(
+                    width: 210,
+                    child: OutlinedButton.icon(
+                        onPressed: () async {
+                User? user = await _authService.signInWithGoogle();
+                if (user != null) {
+                  print('User signed in: ${user.displayName}');
+                } else {
+                  print('Sign-in failed');
+                }
+              },
+                        icon: const Image(
+                          image: AssetImage("asset/google.png"),
+                          width: 30,
+                        ),
+                        label: const Text(
+                          "Sign With Google",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
+                        )),
+                  ),
+                ),
               const SizedBox(
                 height: 6,
               ),
@@ -324,4 +369,7 @@ class _LoginpageState extends State<Loginpage> {
       goTohome(context);
     }
   }
+
+
+
 }

@@ -7,11 +7,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
-import 'package:shubham_test/login_sign.dart/login_screen.dart';
+import 'package:shubham_test/demo/auth.dart';
+import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/main.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
@@ -27,6 +29,9 @@ class SignScreen extends StatefulWidget {
 class _SignScreenState extends State<SignScreen> {
   final _auth = Authservice();
 
+
+ final AuthService _authService = AuthService();// google authentication
+ 
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _fullname = TextEditingController();
@@ -50,10 +55,54 @@ class _SignScreenState extends State<SignScreen> {
   }
 
   bool _isVisible = false;
+// validation for name
+
+  String? validateName(String? name) {
+    if (name == null || name.isEmpty) {
+      return 'Name is required';
+    } else if (name.length < 3) {
+      return 'Name must be at least 3 characters long';
+    }
+    return null;
+  }
+
+  String? validateMobile(String? mobile) {
+    if (mobile == null || mobile.isEmpty) {
+      return 'Mobile number is required';
+    } else if (mobile.length != 10) {
+      return 'Mobile number must be 10 digits long';
+    }
+    return null;
+  }
+
+  String? validatePassword(String? password) {
+    if (password == null || password.isEmpty) {
+      return 'Password is required';
+    } else if (password.length < 8) {
+      return 'Password must be at least 8 characters long';
+    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+      return 'Password must contain at least one uppercase letter';
+    } else if (!RegExp(r'[a-z]').hasMatch(password)) {
+      return 'Password must contain at least one lowercase letter';
+    } else if (!RegExp(r'[0-9]').hasMatch(password)) {
+      return 'Password must contain at least one digit';
+    } else if (!RegExp(r'[!@#\$&*~]').hasMatch(password)) {
+      return 'Password must contain at least one special character';
+    }
+    return null;
+  }
+
+  void _submitForm() {
+    if (_formkey.currentState!.validate()) {
+      // Process the sign-up (e.g., send data to the server)
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Account Login Successfully')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -88,7 +137,6 @@ class _SignScreenState extends State<SignScreen> {
                     padding: const EdgeInsets.all(20),
                     child: TextFormField(
                       controller: _fullname,
-                     
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.person_outline_outlined,
@@ -99,9 +147,7 @@ class _SignScreenState extends State<SignScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
-                      validator: (name) => name!.length < 6
-                          ? 'Name should be at Least 3 Characters'
-                          : null,
+                      validator: validateName,
                     ),
                   ),
                 ),
@@ -112,7 +158,6 @@ class _SignScreenState extends State<SignScreen> {
                     child: TextFormField(
                       controller: _email,
                       keyboardType: TextInputType.emailAddress,
-                    
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.email_outlined,
@@ -134,7 +179,6 @@ class _SignScreenState extends State<SignScreen> {
                     child: TextFormField(
                       controller: _mobile,
                       keyboardType: TextInputType.number,
-                   
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.mobile_friendly_outlined,
@@ -145,10 +189,7 @@ class _SignScreenState extends State<SignScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32),
                           )),
-
-                      validator: (number) => number!.length < 10
-                          ? 'Number should be at Least 10 digit'
-                          : null,
+                      validator: validateMobile,
                     ),
                   ),
                 ),
@@ -159,7 +200,6 @@ class _SignScreenState extends State<SignScreen> {
                     child: TextFormField(
                       controller: _password,
                       obscureText: _isVisible,
-                  
                       decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.fingerprint,
@@ -184,9 +224,7 @@ class _SignScreenState extends State<SignScreen> {
                               : const Icon(Icons.visibility_off),
                         ),
                       ),
-                      validator: (password) => password!.length < 8
-                          ? 'Contains at least 8 characters\nContains at least 1 number '
-                          : null,
+                      validator: validatePassword,
                     ),
                   ),
                 ),
@@ -200,11 +238,9 @@ class _SignScreenState extends State<SignScreen> {
                       width: 210,
                       child: ElevatedButton(
                         onPressed: () {
-                          _formkey.currentState!.validate();
+                          _submitForm();
                           _signup();
-                        }
-                     
-                        ,
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                         ),
@@ -234,7 +270,14 @@ class _SignScreenState extends State<SignScreen> {
                   child: SizedBox(
                     width: 210,
                     child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {
+                          User? user = await _authService.signInWithGoogle();
+                          if (user != null) {
+                            print('User signed in: ${user.displayName}');
+                          } else {
+                            print('Sign-in failed');
+                          }
+                        },
                         icon: const Image(
                           image: AssetImage("asset/google.png"),
                           width: 30,

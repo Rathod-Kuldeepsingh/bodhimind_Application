@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "926766537164",
-    "project_id": "test1-bb0b6",
-    "storage_bucket": "test1-bb0b6.appspot.com"
+    "project_number": "893030457264",
+    "project_id": "bodhimind-a479c",
+    "storage_bucket": "bodhimind-a479c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:926766537164:android:b1a0f099a4cba959372569",
+        "mobilesdk_app_id": "1:893030457264:android:458d6378e0fdcae76a4075",
         "android_client_info": {
-          "package_name": "com.example.shubham_test"
+          "package_name": "com.bodhimind.test"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "893030457264-5mecv9d5viclgodrgbplhab0s4ljsui6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bodhimind.test",
+            "certificate_hash": "4dcb87ece697b95206ad526e58f57cddc0ae40c4"
+          }
+        },
+        {
+          "client_id": "893030457264-glavqjo23ab76179uahmt7i2ege2re23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAufluiioW5d1Ix2PaX4DorwBTtplNf8W8"
+          "current_key": "AIzaSyAjucwVpcnGWJnLXz3lxCIVPJOR_1DhIDs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893030457264-glavqjo23ab76179uahmt7i2ege2re23.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "893030457264-nk6q62dfcm83npq85koj9fgmr8elslb3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shubhamTest"
+              }
+            }
+          ]
         }
       }
     }
