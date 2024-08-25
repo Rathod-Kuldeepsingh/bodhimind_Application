@@ -1,11 +1,13 @@
 // ignore: unnecessary_import
 import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 // ignore: unused_import
 import 'package:get/route_manager.dart';
+// ignore: unused_import
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';

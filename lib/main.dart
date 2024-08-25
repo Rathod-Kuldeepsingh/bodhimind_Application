@@ -22,7 +22,7 @@ Future<void> main() async {
  
 
   runApp(MaterialApp(
-    home: SignScreen(),
+    home: const Splash(),
     routes: {
       "/Loginpage": (context) => const Loginpage(),
       "/Dashboard": (context) => const DashboardScreen(),

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shubham_test/auth/authen.dart';
+// ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
+// ignore: unused_import
 import 'package:shubham_test/main.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -18,7 +20,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final _auth = Authservice();
   @override
   Widget build(BuildContext context) {
-    var user = "Kuldeep";
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -52,7 +53,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                      padding: const EdgeInsets.only(left: 10.0),
                       child: IconButton(
                         onPressed: () async {
                           await _auth.signOut();
@@ -78,7 +79,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     padding: const EdgeInsets.only(left: 10),
                     child: Row(
                       children: [
-                        Text("Hello, $user ",
+                        Text("Hello,",
                             style: GoogleFonts.archivo(
                                 textStyle: const TextStyle(
                                     fontSize: 22,
