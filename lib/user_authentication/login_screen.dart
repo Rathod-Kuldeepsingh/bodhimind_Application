@@ -11,6 +11,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
@@ -361,7 +362,7 @@ class _LoginpageState extends State<Loginpage> {
       );
   goTohome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const DashboardScreen()),
+        MaterialPageRoute(builder: (context) => const  Bottomnavigation()),
       );
   _login() async {
     final user =

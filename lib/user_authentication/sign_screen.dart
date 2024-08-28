@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/demo/auth.dart';
@@ -323,7 +324,7 @@ class _SignScreenState extends State<SignScreen> {
       );
   goTohome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const DashboardScreen()),
+        MaterialPageRoute(builder: (context) => const  Bottomnavigation()),
       );
 
   _signup() async {

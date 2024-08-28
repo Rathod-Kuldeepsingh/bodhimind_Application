@@ -1,13 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:shubham_test/auth/authen.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
+import 'package:shubham_test/otp_screen/email.dart';
+import 'package:shubham_test/otp_screen/mobile.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 // ignore: unused_import
 import 'package:shubham_test/main.dart';
+import 'package:shubham_test/user_authentication/sign_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -18,6 +23,70 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final _auth = Authservice();
+
+  List name = [
+    "Resources Library",
+    "Common Problem",
+    "Professional Support",
+    "Guided Exercises",
+    "Psychological Game",
+    "AI Chatbot"
+  ];
+
+
+  List<Color> colors =[
+    const  Color(0xFF33C4FF),
+    const  Color(0xFFFF6D33),
+    const  Color(0xFF334DFF),
+    const  Color(0xFFFFDC33),
+    const  Color(0xFFBAFF33),
+    const  Color(0xFF33FFE4),
+  ];
+
+
+  List<HugeIcon> icons = [
+    const HugeIcon(
+      icon: HugeIcons.strokeRoundedResourcesAdd,
+      color: Colors.white,
+      size: 60,
+    ),
+    const HugeIcon(
+      icon: HugeIcons.strokeRoundedHealtcare,
+      color: Colors.white,
+      size: 60,
+      
+    ),
+    const HugeIcon(
+      icon: HugeIcons.strokeRoundedComputerProtection,
+      color: Colors.white,
+      size: 60,
+    ),
+    const HugeIcon(
+      icon: HugeIcons.strokeRoundedVideo02,
+      color: Colors.white,
+      size: 60,
+    ),
+    const HugeIcon(
+      icon: HugeIcons.strokeRoundedGame,
+      color: Colors.white,
+      size: 60,
+    ),
+     const HugeIcon(
+      icon: HugeIcons.strokeRoundedAiChat01,
+      color: Colors.white,
+      size: 60,
+    ),
+  ];
+
+  List categoriesscreen =[
+   const Loginpage(),
+   const OtpScreen(),
+   const SignScreen(),
+   const OtpScreen1(),
+   const home_screen()
+  ];
+
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,45 +96,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 10, top: 16),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, top: 16),
                 child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: (){
-                       const Divider(
-                        
-                       );
-                      },
-                      icon: const Icon(
-                        Icons.menu_outlined,
-                        size: 30,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 250),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notification_add_outlined,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: IconButton(
-                        onPressed: () async {
-                          await _auth.signOut();
-                          goToLogin(context);
-                        },
-                        icon: const Icon(
-                          Icons.exit_to_app,
-                          size: 30,
-                        ),
-                      ),
-                    )
-                  ],
+                  children: [],
                 ),
               ),
               // second column
@@ -76,7 +110,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
                         Text("Hello,",
@@ -96,7 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
                         Text("Welcome to Bodhimind ",
@@ -121,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           padding: const EdgeInsets.all(15.0),
                           child: Container(
                             margin: const EdgeInsets.only(top: 5, bottom: 5),
-                            height: 50,
+                            height: 60,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 232, 232),
@@ -141,7 +175,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       ),
                                       hintText: "Search Here...",
                                       hintStyle:
-                                          TextStyle(color: Colors.black)),
+                                          TextStyle(color: Color.fromARGB(255, 33, 33, 33),)),
                                 ),
                               ),
                             ),
@@ -164,8 +198,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           "All Categories",
                           style: GoogleFonts.ubuntu(
                               textStyle: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
                           )),
                         ),
                       ),
@@ -173,8 +207,71 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   )
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: Column(
+                  children: [
+                    GridView.builder(
+                      itemCount: name.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 0.8,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 10
+                      ),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>categoriesscreen[index])),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  color: colors[index],
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Center(
+                                  child: icons[index],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                  name[index],
+                                  style: const TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.w500),
+                                ),
+                              
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  ],
+                ),
+              )
             ],
           ),
+        ),
+      ),
+
+
+
+
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        onPressed: () {},
+        backgroundColor: const Color.fromARGB(255, 3, 138, 248),
+        child: const Icon(
+          Icons.chat,
+          color: Colors.white,
         ),
       ),
     );

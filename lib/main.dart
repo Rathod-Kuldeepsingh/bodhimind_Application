@@ -2,8 +2,8 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
-import 'package:shubham_test/dash/demo.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/firebase_options.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
