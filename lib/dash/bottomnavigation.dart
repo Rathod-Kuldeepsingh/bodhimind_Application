@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
+import 'package:shubham_test/dash/h.dart';
+import 'package:shubham_test/main.dart';
 
 class Bottomnavigation extends StatelessWidget {
   const Bottomnavigation({super.key});
@@ -70,5 +72,5 @@ class Bottomnavigation extends StatelessWidget {
 class NavigationBarController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
   
-  final screen = [ const DashboardScreen(),Container(color: Colors.blue,),Container(color: Colors.red,),Container(color: Colors.yellow,)];
+  final screen = [ const DashboardScreen(),Container(color: Colors.blue,),Container(color: Colors.red,),const Homescreen()];
 }

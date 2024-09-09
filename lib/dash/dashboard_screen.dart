@@ -1,3 +1,6 @@
+// ignore: unused_import
+import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unused_import
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
@@ -5,6 +8,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/chatbot/chatscreen.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/otp_screen/email.dart';
@@ -22,6 +26,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  // ignore: unused_field
   final _auth = Authservice();
 
   List name = [
@@ -30,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "Professional Support",
     "Guided Exercises",
     "Psychological Game",
-    "AI Chatbot"
+    "Maitreya Chatbot"
   ];
 
 
@@ -83,10 +88,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
    const OtpScreen(),
    const SignScreen(),
    const OtpScreen1(),
-   const home_screen()
+   const home_screen(),
+   const HomePage()
   ];
 
- 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +100,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+           
             children: <Widget>[
               const Padding(
                 padding: EdgeInsets.only(left: 10, top: 16),
@@ -146,23 +152,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               // fourth column
               Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       SizedBox(
-                        width: 430,
+                        width: 380,
                         child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(5.0),
                           child: Container(
-                            margin: const EdgeInsets.only(top: 5, bottom: 5),
-                            height: 60,
+                            margin: const EdgeInsets.all(10),
+                            height: 50,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 232, 232),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: SizedBox(
-                              width: 430,
+                            
+                              
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 5.0),
                                 child: TextFormField(
@@ -180,7 +188,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               ),
                             ),
                           ),
-                        ),
+                        
                       ),
                     ],
                   )
@@ -210,6 +218,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 40.0),
                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GridView.builder(
                       itemCount: name.length,
@@ -223,7 +233,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         mainAxisSpacing: 10
                       ),
                       itemBuilder: (context, index) {
-                        return InkWell(
+                        return GestureDetector(
                           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>categoriesscreen[index])),
                           child: Column(
                             children: [
@@ -241,11 +251,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                  name[index],
-                                  style: const TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.w500),
-                                ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 30),
+                                child: Text(
+                                    name[index],
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.w500),
+                                  ),
+                              ),
+                             
                               
                             ],
                           ),
@@ -265,13 +279,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-        onPressed: () {},
-        backgroundColor: const Color.fromARGB(255, 3, 138, 248),
-        child: const Icon(
-          Icons.chat,
+        onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage())),
+        backgroundColor: const Color.fromARGB(255, 0, 3, 4),
+        child: const HugeIcon(
+          icon: HugeIcons.strokeRoundedAiChat02,
           color: Colors.white,
+          size: 35,
         ),
       ),
     );

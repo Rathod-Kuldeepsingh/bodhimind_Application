@@ -49,7 +49,7 @@ class _GetStartState extends State<GetStart> {
               child: ElevatedButton(
                   
                   onPressed: () {
-                     Navigator.pushNamed(context,"/Loginpage");
+                     Navigator.pushNamed(context,"/wrapper");
                   },
                   style: ElevatedButton.styleFrom(
                      backgroundColor: Colors.blue,
@@ -61,10 +61,10 @@ class _GetStartState extends State<GetStart> {
                   ),),
 
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(height: 60,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: TextButton(onPressed: (){}, child: const Text.rich(
+                  padding: const EdgeInsets.only(left: 50 , right: 0),
+                  child: GestureDetector(onTap: (){}, child: const Text.rich(
                     TextSpan(
                       text: "By Continuing,you agree to Bodhimind, ",
                       style: TextStyle(color: Colors.black),

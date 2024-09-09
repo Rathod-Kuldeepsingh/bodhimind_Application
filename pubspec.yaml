@@ -46,6 +46,11 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth:
   hugeicons: ^0.0.7
+  dash_chat_2:
+  chat_gpt_sdk:
+  http:
+  flutter_gemini: ^2.0.5
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

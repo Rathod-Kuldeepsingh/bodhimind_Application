@@ -12,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/dash/bottomnavigation.dart';
+// ignore: unused_import
 import 'package:shubham_test/dash/dashboard_screen.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
@@ -64,6 +65,7 @@ class _LoginpageState extends State<Loginpage> {
   // visible password function
   bool _isVisible = false;
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +95,7 @@ class _LoginpageState extends State<Loginpage> {
                   )),
               const SizedBox(height: 10),
               SizedBox(
-                width: 400,
+                width: 420,
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextFormField(
@@ -113,7 +115,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
               ),
               SizedBox(
-                width: 400,
+                width: 420,
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: TextFormField(
@@ -287,22 +289,25 @@ class _LoginpageState extends State<Loginpage> {
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.all(0),
+                padding: const EdgeInsets.only(top: 30),
                 child: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _formke1.currentState!.validate();
-                      _login();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
+                  child: SizedBox(
+                    width: 170,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _formke1.currentState!.validate();
+                        _login();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
