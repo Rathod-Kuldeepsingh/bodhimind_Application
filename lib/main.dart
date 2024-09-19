@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
 import 'package:shubham_test/chatbot/key.dart';
+import 'package:shubham_test/common_problem/comm_list.dart';
+import 'package:shubham_test/common_problem/list.dart';
 import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
@@ -35,6 +37,8 @@ Future<void> main() async {
     home: const Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
+      "/common_problem": (context) =>  Common_problem(),
+      "/bottomnavigation": (context) => const Bottomnavigation(),
       "/Loginpage": (context) => const Loginpage(),
       "/Dashboard": (context) => const DashboardScreen(),
       "/Signpage": (context) => const SignScreen(),

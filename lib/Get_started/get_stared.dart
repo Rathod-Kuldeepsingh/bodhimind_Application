@@ -49,7 +49,7 @@ class _GetStartState extends State<GetStart> {
               child: ElevatedButton(
                   
                   onPressed: () {
-                     Navigator.pushNamed(context,"/wrapper");
+                     Navigator.pushNamed(context,"/Loginpage");
                   },
                   style: ElevatedButton.styleFrom(
                      backgroundColor: Colors.blue,

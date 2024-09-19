@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shubham_test/onscreen/onboarding_page.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shubham_test/user_authentication/wrap.dart';
 import "package:simple_gradient_text/simple_gradient_text.dart";
 
 class Splash extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SplashState extends State<Splash> {
 
   _navigatetohome() async{
      await Future.delayed( const Duration(seconds: 5),(){});
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const OnboardigPage()));
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Wrapper()));
   }
   @override
   Widget build(BuildContext context) {

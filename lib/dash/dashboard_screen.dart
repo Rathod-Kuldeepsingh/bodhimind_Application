@@ -1,4 +1,6 @@
 // ignore: unused_import
+// ignore_for_file: unused_import, duplicate_ignore
+
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
@@ -9,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
+import 'package:shubham_test/common_problem/comm_list.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/otp_screen/email.dart';
@@ -41,7 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List<Color> colors =[
     const  Color(0xFF33C4FF),
-    const  Color(0xFFFF6D33),
+    const Color.fromARGB(255, 244, 59, 59),
     const  Color(0xFF334DFF),
     const  Color(0xFFFFDC33),
     const  Color(0xFFBAFF33),
@@ -85,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List categoriesscreen =[
    const Loginpage(),
-   const OtpScreen(),
+   Common_problem(),
    const SignScreen(),
    const OtpScreen1(),
    const home_screen(),
