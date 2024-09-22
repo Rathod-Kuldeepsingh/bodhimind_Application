@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Financial extends StatelessWidget {
+  const Financial({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Economic/Financial Stress',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Economic or financial stress refers to the anxiety and pressure individuals feel due to financial challenges or instability. This can arise from various situations, such as job loss, debt accumulation, unexpected expenses, or inadequate income to meet basic needs.',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +85,15 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Job loss: \nUnemployment or underemployment can lead to financial hardship.'
+                        '\n'
+                        '\nDebt: \nAccumulating debt can create stress and anxiety.'
+                        '\n'
+                        '\nUnexpected expenses: \nMedical bills, car repairs, or other unexpected expenses can strain finances.'
+                        '\n'
+                        '\nLow income: \nDifficulty meeting basic needs due to low income.'
+                        '\n'
+                        '\nEconomic instability: \nEconomic downturns or recessions can impact job security and financial stability.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +134,13 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        'Physical symptoms: \nIncreased blood pressure, heart rate, and stress hormones.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nMental health issues: \nDepression, anxiety, and insomnia.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nRelationship problems: \nFinancial stress can strain relationships.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nPhysical health problems: \nChronic stress can lead to physical health problems such as heart disease and digestive issues.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +179,17 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Budgeting: \nCreate a budget to track income and expenses.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nDebt management: \nDevelop a plan to manage debt and reduce expenses.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nJob search: \nActively seek employment or explore career opportunities.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nFinancial counseling: \nSeek professional advice on financial management.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nSupport groups: \nConnect with others facing similar financial challenges.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

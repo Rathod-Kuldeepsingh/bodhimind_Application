@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class ObsessiveCompulsiveDisorder extends StatelessWidget {
+  const ObsessiveCompulsiveDisorder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Obsessive-Compulsive Disorder',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Obsessive-Compulsive Disorder (OCD) is a mental health condition characterized by persistent, unwanted thoughts (obsessions) and repetitive behaviors or mental acts (compulsions) that individuals feel driven to perform in response to those thoughts.',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +85,11 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Genetics: \nOCD has a strong genetic component.'
+                        '\n'
+                        '\nNeurochemical imbalances: \nImbalances in brain chemicals such as serotonin and dopamine.'
+                        '\n'
+                        '\nBrain structure abnormalities: \nDifferences in brain structure or function may contribute to OCD'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +130,13 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
-                        ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
-                        ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        'Intrusive thoughts: \nObsessions, which are persistent, unwanted thoughts, images, or urges that can cause distress or anxiety.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nCompulsions: \nRepetitive behaviors or mental acts that individuals feel compelled to perform to reduce anxiety or prevent negative outcomes.'
+                        '\n'
+                        '\nImpaired functioning: \nOCD can significantly interfere with daily activities, relationships, and overall quality of life.'
+                        '\n'
+                        '\nPhysical symptoms: \nOCD can lead to physical symptoms such as fatigue, headaches, and muscle tension due to the constant mental and emotional stress.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +175,17 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Medication: \nAntidepressants, particularly selective serotonin reuptake inhibitors (SSRIs), can help regulate neurochemical imbalances and reduce OCD symptoms.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nExposure and response prevention (ERP): \nThis type of therapy involves gradually exposing individuals to their feared situations or obsessions while preventing them from engaging in their compulsive behaviors. ERP helps individuals learn to tolerate anxiety and break the cycle of obsessions and compulsions.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nCognitive-behavioral therapy (CBT): \nCBT focuses on challenging and changing negative thoughts and behaviors associated with OCD. Therapists help individuals identify and reframe negative thoughts, develop coping strategies, and gradually reduce avoidance behaviors.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nSupport groups: \nConnecting with others who have OCD can provide support, understanding, and practical coping strategies.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nDeep brain stimulation (DBS): \nIn severe cases of OCD that do not respond to medication or therapy, DBS may be considered. This involves surgically implanting electrodes in specific areas of the brain to stimulate certain brain regions.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Phobia extends StatelessWidget {
+  const Phobia({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Phobia',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'A phobia is an intense, irrational fear of a specific object, situation, or activity that leads to significant anxiety and avoidance behavior. Unlike general fears, phobias provoke overwhelming distress and can interfere with daily life. Common phobias include fear of heights (acrophobia), spiders (arachnophobia), flying (aviophobia), and enclosed spaces (claustrophobia).',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +85,13 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Past traumatic experiences: \nExposure to a specific fear-inducing situation can lead to a phobia.'
+                        '\n'
+                        '\nGenetics: \nPhobias can be inherited or genetically predisposed.'
+                        '\n'
+                        '\nConditioning: \nClassical conditioning can associate a neutral stimulus with a fear response.'
+                        '\n'
+                        '\nObservational learning: \nObserving others fear responses can lead to the development of phobias.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +132,13 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
-                        ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
-                        ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        'Panic attacks: \nIntense fear and physical symptoms such as rapid heartbeat, sweating, and difficulty breathing.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nAvoidance behavior: \nAvoiding situations or objects that trigger fear.'
+                        '\n'
+                        '\nSocial isolation: \nPhobias can limit social activities and lead to isolation.'
+                        '\n'
+                        '\nReduced quality of life: \nPhobias can significantly impact daily life and well-being.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +177,15 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Support groups: \nConnect with others who have similar experiences and share coping strategies.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nCognitive-behavioral therapy: \nLearn to manage negative thoughts and behaviors related to phobias.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nExposure therapy: \nGradually exposing oneself to the feared object or situation to overcome fear.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
-                        '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nMedication: \n In some cases, medication may be helpful in managing phobia symptoms.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

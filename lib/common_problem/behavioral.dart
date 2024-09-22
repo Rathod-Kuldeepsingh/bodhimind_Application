@@ -1,21 +1,17 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Behavioral extends StatelessWidget {
+  const Behavioral({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+       backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Behavioral Issues',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Behavioral issues refer to a range of actions and patterns that are disruptive, challenging, or problematic in social, academic, or home environments. These can manifest as aggression, defiance, impulsivity, or difficulty following rules and routines. Behavioral issues may stem from various factors, including emotional distress, environmental influences, or underlying mental health conditions.',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +85,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Mental health conditions: \n'
+                        'Underlying conditions such as ADHD, autism, or depression can contribute to behavioral issues.'
+                        '\n'
+                        '\nEnvironmental factors:  \n'
+                        'Stressful home or school environments, exposure to violence, or substance abuse can affect behavior.'
+                        '\n'
+                        '\nDevelopmental delays:\n'
+                        'Difficulties in social, emotional, or cognitive development can lead to behavioral problems.'
+                        '\n'
+                        '\nGenetics: \n'
+                        'Inherited traits or predispositions can influence behavior.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +136,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        'Physical injuries: \n'
+                        'Aggressive or impulsive behavior can lead to physical harm.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nSocial isolation:\n'
+                        'Behavioral issues can strain relationships and lead to social withdrawal.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nAcademic difficulties: \n'
+                        ' Difficulty concentrating or following rules can impact academic performance.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nLegal problems: \n'
+                        'Behavioral problems can lead to legal consequences.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +185,21 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                       'Behavior therapy:\n Learn to identify and modify problematic behaviors.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                       '\nFamily therapy: \n'
+                       'Address family dynamics and improve communication.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nSupport groups:\n'
+                        'Connect with other families facing similar challenges.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nEarly intervention: \n'
+                        ' Seek help early to prevent behavioral problems from escalating.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nMedication:\n'
+                        'In some cases, medication may be helpful in managing underlying mental health conditions or behavioral symptoms.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,
@@ -218,6 +216,7 @@ class Depression_content extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        )
+    );
   }
 }

@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Bipolardisorder extends StatelessWidget {
+  const Bipolardisorder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Bipolar Disorder',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,10 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Bipolar disorder is a mental health condition characterized by significant mood swings that include emotional highs (mania or hypomania) and lows (depression). These mood episodes can affect energy levels, activity, sleep, and the ability to think clearly.'
+                        '\n\n1. Manic Episodes: During a manic phase, individuals may feel excessively energized, euphoric, or irritable. They might engage in risky behaviors, have racing thoughts, and experience decreased need for sleep.'
+                        '\n\n2. Hypomanic Episodes: Similar to mania but less severe, hypomania involves elevated mood and increased activity but does not significantly impair functioning.'
+                        '\n\n3. Depressive Episodes: In contrast, depressive phases can lead to feelings of sadness, hopelessness, and a lack of interest in activities. Individuals may struggle with fatigue, changes in sleep and appetite, and difficulty concentrating.',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +80,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +88,13 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Genetics: \nBipolar disorder has a strong genetic component.'
+                        '\n'
+                        '\nNeurochemical imbalances: \nImbalances in brain chemicals such as serotonin, dopamine, and norepinephrine.'
+                        '\n'
+                        '\nStressful life events: \nMajor life stressors can trigger or exacerbate bipolar disorder symptoms.'
+                        '\n'
+                        '\nBrain structure abnormalities: \nDifferences in brain structure or function may contribute to bipolar disorder.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +135,15 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
-                        ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
-                        ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        'Mood swings: \nExtreme fluctuations between manic and depressive episodes.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nImpaired judgment: \nDifficulty making rational decisions during manic episodes.'
+                        '\n'
+                        '\nRelationship problems: \nBipolar disorder can strain relationships.'
+                        '\n'
+                        '\nSubstance abuse: \nIncreased risk of substance abuse.'
+                        '\n'
+                        '\nSuicide risk: \nIndividuals with bipolar disorder are at a higher risk of suicide.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +182,15 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Support groups: \nConnecting with others who have bipolar disorder can provide support and understanding.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nSelf-care: \nRegular exercise, healthy diet, and adequate sleep can help manage symptoms.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nTherapy: \nCognitive-behavioral therapy and interpersonal therapy can help manage symptoms and improve coping skills.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
-                        '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nMedication: \n  Medication can help stabilize mood and reduce symptoms.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

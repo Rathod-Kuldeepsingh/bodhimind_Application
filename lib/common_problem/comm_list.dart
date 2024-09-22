@@ -3,7 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:shubham_test/common_problem/BipolarDisorder.dart';
+import 'package:shubham_test/common_problem/Obsessive_Compulsive_Disorder.dart';
+import 'package:shubham_test/common_problem/Struggle.dart';
+import 'package:shubham_test/common_problem/anxiety.dart';
+import 'package:shubham_test/common_problem/behavioral.dart';
+import 'package:shubham_test/common_problem/financial.dart';
 import 'package:shubham_test/common_problem/list.dart';
+import 'package:shubham_test/common_problem/loneliness.dart';
+import 'package:shubham_test/common_problem/phobia.dart';
+import 'package:shubham_test/common_problem/self-doubt.dart';
+import 'package:shubham_test/common_problem/sleep.dart';
+import 'package:shubham_test/common_problem/social-fear.dart';
+import 'package:shubham_test/common_problem/sudden_loss.dart';
+import 'package:shubham_test/common_problem/work_stress.dart';
 import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
@@ -22,7 +35,7 @@ class Common_problem extends StatelessWidget {
     'Struggle with Relation',
     'Economic/Financial Stress',
     'Sleep Disorders',
-    'phobia',
+    'Phobia',
     'Bipolar Disorder',
     'Obsessive-Compulsive Disorder'
   ];
@@ -64,38 +77,37 @@ class Common_problem extends StatelessWidget {
   // ignore: non_constant_identifier_names
   final List_common_problem = [
     // list view
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
-    const Kuldeep(),
+    const Depression_content(),
+    const Anxiety(),
+    const WorkStress(),
+    const Loneliness(),
+    const SuddenLoss(),
+    const Selfdoubt(),
+    const Socialfear(),
+    const Behavioral(),
+    const Struggle(),
+    const Financial(),
+    const Sleep(),
+    const Phobia(),
+    const Bipolardisorder(),
+    const ObsessiveCompulsiveDisorder(),
   ];
 
   final List<String> subtitle = [
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    'Subtitle for item :',
-    
+    'Lost in darkness, searching for light',
+    'A storm of thoughts in a quiet mind',
+    'Striving for success while losing myself',
+    'Surrounded by faces, yet feeling invisible',
+    'In an instant, everything changed forever',
+    'A voice inside whispers that I’m never enough.',
+    'Words catch in my throat, silenced by anxiety',
+    'Fighting internal battles that spill into everyday life',
+    'Love feels like a tug-of-war between hearts',
+    'Counting coins while dreams slip away',
+    'Tossing in darkness, searching for peace',
+    'Every shadow feels like a threat in the depths of my mind',
+    'In a dance between euphoria and despair',
+    'In a world of order, chaos lurks beneath',
   ];
 
   @override
@@ -130,7 +142,7 @@ class Common_problem extends StatelessWidget {
                       builder: (context) =>
                           List_common_problem[index])), // ontap function
               child: Card(
-                margin: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(10.0),
                 color: color[index],
                 child: ListTile(
                   leading: images[index],
@@ -138,10 +150,13 @@ class Common_problem extends StatelessWidget {
                     items[index],
                     style: GoogleFonts.openSans(
                       textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.w600),
+                          fontSize: 17, fontWeight: FontWeight.w700),
                     ),
                   ),
-                  subtitle: Text(subtitle[index]),
+                  subtitle: Text(
+                    subtitle[index],
+                    style: const TextStyle(color: Colors.black, fontSize: 13),
+                  ),
                 ),
               ),
             );

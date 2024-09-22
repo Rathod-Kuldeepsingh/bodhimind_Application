@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class WorkStress extends StatelessWidget {
+  const WorkStress({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Work-life-stress',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Work-life stress arises when job responsibilities interfere with personal life. It is typically caused by an imbalance in workload, poor time management, or high expectations, leading to physical and mental exhaustion (burnout).',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -80,35 +76,34 @@ class Depression_content extends StatelessWidget {
                   )
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
-                        '\n',
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          height: 1.6,
-                        )),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      'Work Overload:\n'
+                      'When demands at work exceed your ability to cope, work-life stress occurs. Unrealistic expectations, tight deadlines, and long hours can all contribute.'
+                      ' \n'
+                      '\nLack of Control:\n'
+                      'Feeling that you have no say in job-related decisions or being micromanaged increases stress levels.'
+                      ' \n'
+                      '\nWorkplace Environment:\n'
+                     'A toxic or unsupportive work culture, poor communication, and conflicts with coworkers can worsen work-life stress.'
+                      '\n'
+                      '\nPersonal Responsibilities:\n'
+                      'Stress can increase when there is a lack of time or energy for personal life, family commitments, and leisure.',
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.6,
+                      )),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -129,7 +124,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -137,17 +132,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        '\nCardiovascular Problems:\n'
+                        'Chronic stress raises blood pressure and cholesterol levels, increasing the risk of heart attack and stroke.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nSleep Disorders:\n'
+                        'Stress can lead to insomnia or poor-quality sleep, further exacerbating fatigue and stress.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nGastrointestinal Issues:\n'
+                       'Stress disrupts digestion, causing symptoms such as stomach cramps, constipation, or diarrhea.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nMental Health Decline:\n'
+                        'Work-related stress can lead to anxiety, depression, and burnout, reducing overall well-being and productivity.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -180,28 +175,28 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        '\nTime Management:\n'
+                       'Prioritize and delegate tasks to reduce the workload. Use tools like calendars and apps to organize tasks more efficiently. '
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nEstablishing Boundaries:\n'
+                       'Setting boundaries between work and personal life (e.g., not checking emails after hours) can reduce stress.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nSelf-Care:\n'
+                       'Exercise, meditation, hobbies, and spending time with loved ones help counterbalance work pressures.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nCommunication:\n'
+                        'Clear communication with supervisors and colleagues about workload and expectations is critical to managing stress.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nSeeking Professional Help:\n'
+                       'A therapist or career coach can provide tools to handle workplace stress and improve work-life balance.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

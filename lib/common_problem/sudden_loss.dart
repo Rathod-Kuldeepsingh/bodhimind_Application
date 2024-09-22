@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class SuddenLoss extends StatelessWidget {
+  const SuddenLoss({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Sudden loss',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,14 +45,15 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
-                        textAlign: TextAlign.justify,
+                        'Sudden loss refers to the unexpected loss of a loved one or significant life event (e.g., job loss, relationship breakdown), causing intense grief and emotional distress. The shock can make it difficult to process emotions and move forward.',
+                            textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           height: 1.6,
                         )),
+                    
                       ),
                     ),
                   ],
@@ -81,7 +78,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +86,14 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Unexpected Death:\n'
+                        'Losing someone suddenly, due to accidents, heart attacks, or other sudden illnesses.'
+                        '\n'
+                        '\nSudden Unemployment:\n'
+                       'Being laid off or fired without warning.'
+                        '\n'
+                        '\nRelationship Breakdowns:\n'
+                       'Divorce, breakups, or estrangements that happen unexpectedly.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +134,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        'Shock and Denial:\n'
+                        'Individuals may feel numb, detached, and unable to process the loss, leading to prolonged grieving.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nPhysical Symptoms:\n'
+                        'Sudden loss can lead to headaches, chest pain, digestive problems, and difficulty sleeping due to the emotional toll.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nMental Health Decline:\n'
+                        'Individuals may experience depression, anxiety, or post-traumatic stress disorder (PTSD) following a sudden loss.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nImpaired Functioning:\n'
+                        'Loss can cause difficulty concentrating, memory problems, and difficulty completing daily tasks.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +183,21 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Grief Counseling:\n'
+                        'Therapy can help individuals process the loss, understand their emotions, and develop healthy coping mechanisms.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nSupport Groups:\n'
+                        'Joining a group of others who have experienced similar losses can create a sense of community and understanding.'
+                        '\nMindfulness Practices:\n'
+                        'Meditation, yoga, and breathing exercises can help individuals stay present and manage overwhelming emotions.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nSelf-Care:\n'
+                        'Ensuring proper sleep, diet, and exercise can help individuals cope with the physical and emotional toll of loss.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
-                        '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nAllowing Time to Grieve:\n'
+                        'It’s important to give oneself permission to grieve and feel the emotions associated with the loss without rushing the process.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

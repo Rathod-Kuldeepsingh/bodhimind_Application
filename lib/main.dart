@@ -7,8 +7,21 @@ import 'package:get/get.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
 import 'package:shubham_test/chatbot/key.dart';
+import 'package:shubham_test/common_problem/BipolarDisorder.dart';
+import 'package:shubham_test/common_problem/Obsessive_Compulsive_Disorder.dart';
+import 'package:shubham_test/common_problem/Struggle.dart';
+import 'package:shubham_test/common_problem/anxiety.dart';
+import 'package:shubham_test/common_problem/behavioral.dart';
 import 'package:shubham_test/common_problem/comm_list.dart';
+import 'package:shubham_test/common_problem/financial.dart';
 import 'package:shubham_test/common_problem/list.dart';
+import 'package:shubham_test/common_problem/loneliness.dart';
+import 'package:shubham_test/common_problem/phobia.dart';
+import 'package:shubham_test/common_problem/self-doubt.dart';
+import 'package:shubham_test/common_problem/sleep.dart';
+import 'package:shubham_test/common_problem/social-fear.dart';
+import 'package:shubham_test/common_problem/sudden_loss.dart';
+import 'package:shubham_test/common_problem/work_stress.dart';
 import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
@@ -34,7 +47,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home: const Splash(),
+    home:  const Bottomnavigation(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),

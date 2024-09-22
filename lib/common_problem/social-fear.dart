@@ -1,21 +1,17 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Socialfear extends StatelessWidget {
+  const Socialfear({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+       backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Social-fear',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,7 +45,7 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
+                        'Social fear, often referred to as social anxiety, is an intense apprehension or fear of social situations where one might be scrutinized, judged, or embarrassed. Individuals experiencing this fear may worry excessively about how they are perceived by others, leading to avoidance of social interactions, public speaking, or even everyday activities like eating in public. Symptoms can include rapid heartbeat, sweating, blushing, and a strong desire to escape the situation. This fear can significantly impact personal relationships, career opportunities, and overall quality of life. Overcoming social fear often involves therapy, gradual exposure to social situations, and developing coping strategies.',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,14 +85,19 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
+                        'Fear of rejection:\n'
+                        ' Worrying about being judged or disliked by others.'
+                        '\n'
+                        '\nFear of embarrassment: \n'
+                        'Avoiding social situations due to a fear of making mistakes or appearing foolish.'
+                        '\n'
+                        '\nPast negative experiences: \n'
+                        'Having negative social interactions in the past that have led to fear.'
+                        '\n'
+                        '\nShyness:\n'
+                        'Having a naturally reserved or introverted personality.'
+                        '\n'
+                        '\nSocial anxiety disorder: \nA mental health condition characterized by intense fear of social situations.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -137,17 +138,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        'Physical symptoms:  \n'
+                        'Rapid heartbeat, sweating, blushing, and difficulty breathing.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nMental health issues: \n'
+                        'Depression, anxiety, and low self-esteem.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nIsolation:  \n'
+                        'Avoiding social activities and relationships due to fear.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nImpaired performance: \n'
+                        'Difficulty concentrating or performing well in social situations.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +187,21 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                       'Gradual exposure: \n Gradually expose oneself to social situations to overcome fear.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                       '\nCognitive-behavioral therapy (CBT): \n'
+                       'Learn to manage negative thoughts and behaviors related to social fear.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nSocial skills training: \n'
+                        'Develop and practice social skills to improve interactions with others.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nSupport groups: \n'
+                        'Connect with others who have similar experiences and share coping strategies.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nMedication:\n'
+                        'In some cases, medication may be helpful in managing social anxiety symptoms.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,
@@ -218,6 +218,7 @@ class Depression_content extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        )
+    );
   }
 }

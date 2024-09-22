@@ -1,12 +1,8 @@
-// ignore_for_file: unnecessary_import
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Loneliness extends StatelessWidget {
+  const Loneliness({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +11,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Loneliness',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,14 +45,14 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
-                        textAlign: TextAlign.justify,
+                        'Loneliness is a feeling of being disconnected from others, even when surrounded by people. It can be a temporary state, or it can become chronic, leading to mental and physical health problems.',
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           height: 1.6,
                         )),
+                        textAlign: TextAlign.justify,
                       ),
                     ),
                   ],
@@ -81,7 +77,7 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,16 +85,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
-                        '\n',
-                        textAlign: TextAlign.justify,
+                        'Social Isolation:\n'
+                        'Physical isolation, living alone, or lacking close social ties can lead to loneliness.'
+                        '\n'
+                        '\nLife Transitions:\n'
+                        'Major life changes like moving to a new place, losing a loved one, or retiring can leave individuals feeling lonely.'
+                        '\n'
+                        '\nMental Health Issues:\n'
+                        'Conditions like depression and social anxiety can contribute to loneliness by making social interactions more difficult.'
+                        '\n'
+                        '\nTechnology:\n'
+                        'While social media provides a sense of connection, it can also contribute to feelings of loneliness if it replaces meaningful in-person interactions.',
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                           fontSize: 16,
@@ -137,17 +134,17 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        'Heart Health:\n'
+                       'Loneliness is linked to a higher risk of heart disease and stroke due to elevated blood pressure and stress hormones.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+                        '\nImmune Function:\n'
+                        'Loneliness weakens the immune system, making individuals more susceptible to infections.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+                        '\nCognitive Decline:\n'
+                        'Loneliness has been associated with an increased risk of cognitive decline and dementia in older adults.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+                        '\nSleep Problems:\n'
+                        'Individuals who feel lonely may experience poor-quality sleep, which can worsen mental and physical health over time.'
                         '\n',
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
@@ -186,22 +183,22 @@ class Depression_content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        'Social Connection:\n'
+                        'Reaching out to friends, family, or joining social groups can help foster meaningful connections.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+                        '\nVolunteering:\n'
+                      'Helping others can combat feelings of loneliness and create a sense of community.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+                        '\nTherapy:\n'
+                       'Cognitive-behavioral therapy (CBT) can help individuals work through negative thoughts that contribute to loneliness and develop better social skills.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+                        '\nLimit Technology Use:\n'
+                       'Reducing time spent on social media and focusing on in-person interactions can help alleviate loneliness.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+                        '\nAdopting a Pet:\n'
+                       'Pets can provide companionship and reduce feelings of isolation.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,

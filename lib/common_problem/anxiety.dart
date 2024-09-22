@@ -1,12 +1,9 @@
-// ignore_for_file: unnecessary_import
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ignore: camel_case_types
-class Depression_content extends StatelessWidget {
-  const Depression_content({super.key});
+class Anxiety extends StatelessWidget {
+  const Anxiety({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +12,7 @@ class Depression_content extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           toolbarHeight: 80,
-          title: Text('Depression',
+          title: Text('Anxiety',
               style: GoogleFonts.openSans(
                   textStyle: const TextStyle(
                       fontSize: 27,
@@ -49,8 +46,8 @@ class Depression_content extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'Depression is a serious mental health condition characterized by persistent feelings of sadness, hopelessness, and a lack of interest or pleasure in activities once enjoyed. It affects how a person feels, thinks, and behaves, leading to a variety of emotional and physical problems.',
-                        textAlign: TextAlign.justify,
+                       'Anxiety involves excessive worry and fear about everyday situations. It’s more than just temporary worry or fear—it’s persistent and can interfere with daily activities. Common anxiety disorders include generalized anxiety disorder (GAD), panic disorder, and social anxiety disorder.',
+                       textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                           fontSize: 16,
@@ -80,35 +77,35 @@ class Depression_content extends StatelessWidget {
                   )
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Biological Factors:\n'
-                        'Depression has a genetic component, meaning it can run in families. Hormonal imbalances, particularly in neurotransmitters like serotonin, dopamine, and norepinephrine, can also lead to depression.'
-                        ' \n'
-                        '\nPsychological Factors:\n'
-                        'Trauma, long-term stress, and a negative or pessimistic personality can predispose someone to depression. Conditions like low self-esteem or self-critical thinking patterns can exacerbate the problem.'
-                        ' \n'
-                        '\nEnvironmental Factors:\n'
-                       'External circumstances like loss of a loved one, financial stress, prolonged unemployment, or other life changes (such as moving or changing jobs) may trigger depression.'
-                        '\n',
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          height: 1.6,
-                        )),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      'Genetics:\n'
+                     'Anxiety disorders can be hereditary, meaning that individuals with a family history of anxiety are more likely to experience it themselves.'
+                      ' \n'
+                      '\nBrain Chemistry:\n'
+                    'An imbalance of neurotransmitters like serotonin, norepinephrine, and gamma-aminobutyric acid (GABA) can contribute to feelings of anxiety.'
+                      ' \n'
+                      '\nEnvironmental Stressors:\n'
+                     'Major life events like trauma, financial difficulties, or job loss can trigger anxiety. Continuous exposure to stressful situations may result in chronic anxiety.'
+                      '\n'
+                      '\nPersonality Traits:\n'
+                     'People who are naturally more timid, shy, or perfectionistic may be more prone to anxiety disorders.'
+                     ,
+                     textAlign: TextAlign.justify,
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.6,
+                      )),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -129,27 +126,29 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.only(left: 14.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(0),
                       child: Text(
-                        'Chronic Fatigue:\n'
-                        'Depression can cause extreme tiredness, making it difficult to perform daily tasks. People with depression may sleep too much or too little, which disrupts the bodys normal rhythm.'
+                        '\nIncreased Heart Rate:\n'
+                        'Anxiety causes the body to activate its fight-or-flight response, leading to an elevated heart rate and high blood pressure, which over time can increase the risk of cardiovascular diseases.'
                         ' \n'
-                        '\nWeakened Immune System:\n'
-                        'Depression has been shown to weaken the immune system, making individuals more vulnerable to infections and illness.'
+
+                       '\nRespiratory Issues:\n'
+                      'Hyperventilation, or rapid breathing during anxiety attacks, can lead to dizziness, tingling sensations, and shortness of breath.'
                         ' \n'
-                        '\nDigestive Issues:\n'
-                        'Depression can manifest physically as gastrointestinal problems, such as indigestion, nausea, or appetite changes, often leading to weight fluctuations.'
+
+                        '\nDigestive Problems:\n'
+                        'Anxiety is associated with irritable bowel syndrome (IBS) and other digestive disorders. Nausea, upset stomach, and bloating are common.'
                         '\n'
-                        '\nIncreased Risk of Chronic Diseases:\n'
-                       'Depression is linked to the development of heart disease, stroke, and diabetes. It increases the production of stress hormones like cortisol, which over time can harm various bodily systems.'
+
+                        '\nWeakened Immune System:\n'
+                       'Chronic anxiety increases the production of stress hormones like cortisol, which can suppress immune function and increase susceptibility to infections.'
                         '\n',
-                        textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
                           fontSize: 16,
@@ -180,28 +179,34 @@ class Depression_content extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        '\nPsychotherapy:\n'
-                       'Cognitive Behavioral Therapy (CBT) helps identify and challenge negative thought patterns. Interpersonal therapy (IPT) can address personal relationships and how they may contribute to depressive symptoms.'
+                        '\nCognitive Behavioral Therapy (CBT):\n'
+                        'Helps individuals identify irrational fears and replace them with more realistic, balanced thoughts.'
                         '\n'
-                        '\nAntidepressant Medications:\n'
-                        'Selective Serotonin Reuptake Inhibitors (SSRIs) and other classes of antidepressants help regulate brain chemistry.'
+
+
+                        '\nMindfulness Practices:\n'
+                       'Techniques like deep breathing, progressive muscle relaxation, and yoga reduce anxiety by calming the nervous system.'
                         '\n'
-                        '\nExercise:\n'
-                       'Regular physical activity is known to release endorphins, the body’s natural mood lifters, and reduce symptoms of depression.'
+
+
+                        '\nMedications:\n'
+                       'SSRIs, benzodiazepines, and beta-blockers may be prescribed to manage anxiety symptoms.'
                         '\n'
-                        '\nMindfulness and Meditation:\n'
-                        'Mindfulness-based cognitive therapy (MBCT) and meditation techniques help individuals stay present, reducing negative thoughts and emotional suffering.'
+
+                        '\nLifestyle Adjustments:\n'
+                      'Regular exercise, a balanced diet, and adequate sleep can greatly reduce anxiety. Limiting caffeine, alcohol, and nicotine also helps prevent anxiety flare-ups.'
                         '\n'
-                        '\nSocial Support:\n'
-                        'Maintaining relationships with family, friends, and community members can prevent isolation and provide emotional support.'
+
+                        '\nExposure Therapy:\n'
+                      'For social or specific phobias, gradually exposing individuals to feared situations can reduce anxiety over time.'
                         '\n'
                         '\n',
                         textAlign: TextAlign.justify,
