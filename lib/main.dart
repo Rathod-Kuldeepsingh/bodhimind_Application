@@ -1,5 +1,7 @@
 // ignore_for_file: unused_import
 
+import 'dart:collection';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -26,6 +28,7 @@ import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/firebase_options.dart';
+import 'package:shubham_test/guided_exe.dart/video.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/user_authentication/sign_screen.dart';
 import 'package:shubham_test/onscreen/onboarding_page.dart';
@@ -36,6 +39,7 @@ import 'package:shubham_test/otp_screen/otp_s2.dart';
 import 'package:shubham_test/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:shubham_test/user_authentication/wrap.dart';
+import 'package:video_player/video_player.dart';
 
 // firebase auth
 Future<void> main() async {
@@ -47,7 +51,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home:  const Bottomnavigation(),
+    home: const Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),

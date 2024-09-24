@@ -47,10 +47,13 @@ dependencies:
   firebase_auth:
   hugeicons: ^0.0.7
   dash_chat_2:
-  chat_gpt_sdk:
   http:
   flutter_gemini: ^2.0.5
   image_picker: ^1.1.2
+  video_player: ^2.9.1
+  chewie: ^1.8.5
+  youtube_player_flutter: ^8.0.0
+  
 
 dev_dependencies:
   flutter_test:
