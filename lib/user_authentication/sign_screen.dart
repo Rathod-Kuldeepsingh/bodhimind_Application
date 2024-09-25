@@ -97,7 +97,7 @@ class _SignScreenState extends State<SignScreen> {
     if (_formkey.currentState!.validate()) {
       // Process the sign-up (e.g., send data to the server)
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Account Login Successfully')),
+        SnackBar(content: Text('Account Create Successfully')),
       );
     }
   }

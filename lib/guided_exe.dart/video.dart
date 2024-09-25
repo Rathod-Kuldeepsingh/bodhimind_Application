@@ -15,17 +15,17 @@ class _VideoListScreenState extends State<VideoListScreen> {
   List<Map<String, String>> videoDetails = [
     {
       'url': 'https://youtu.be/j7d5Plai03g?si=r2Nz5YVuHJcNiiw1',
-      'description': '10-Minute For Daily \n Meditation',
+      'description': '10-Minute For Daily \nMeditation',
       'subtitle': 'Finding Inner Peace'
     },
     {
       'url': 'https://youtu.be/2FGR-OspxsU?si=MXrMGWeYPe3RId3I',
-      'description': '10-Minute Meditation For Healing',
+      'description': '10-Minute Meditation For \nHealing',
       'subtitle': 'Releasing Emotional Wounds'
     },
     {
       'url': 'https://youtu.be/wkse4PPxkk4?si=xr4kO6xI_8AAM26H',
-      'description': '10-Minute Meditation For Anger',
+      'description': '10-Minute Meditation For \nAnger',
       'subtitle': 'Transforming Fury into Calm'
     },
     {
@@ -35,7 +35,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
     },
     {
       'url': 'https://youtu.be/p7Rfz3M0hIo?si=5g4wHwqrkQ7uJCEr',
-      'description': '5-Minute Meditation For Anxiety',
+      'description': '5-Minute Meditation For \nAnxiety',
       'subtitle': 'A Safe Space for Your Thoughts'
     },
     {
@@ -45,12 +45,12 @@ class _VideoListScreenState extends State<VideoListScreen> {
     },
     {
       'url': 'https://youtu.be/tIZpNrr0uX8?si=BJjsJr2V7v8ZfYNN',
-      'description': '10-Minutes Of Peaceful Beach Sounds For Meditation',
+      'description': '10-Minutes Of Peaceful \nBeach Sounds For Meditation',
       'subtitle': 'Waves of Calm: A Coastal Escape'
     },
     {
       'url': 'https://youtu.be/4S3yJkGWM4E?si=CpEZii9hbLTdb9g1',
-      'description': '10-Minutes Of Peaceful Forest Sounds For Meditation',
+      'description': '10-Minutes Of Peaceful \nForest Sounds For Meditation',
       'subtitle': 'Meditate with the Forest'
     },
     {
@@ -60,12 +60,12 @@ class _VideoListScreenState extends State<VideoListScreen> {
     },
     {
       'url': 'https://youtu.be/lce8Rlusjq4?si=2slIOHN1oJ42F2Zs',
-      'description': '7 Minutes Of Self-Care For The Week',
+      'description': '7 Minutes Of Self-Care \nFor The Week',
       'subtitle': 'Nurturing Your Mind, Body, and Soul'
     },
     {
       'url': 'https://youtu.be/1jz7msnmFLU?si=I7JXGNSkb596gjq-',
-      'description': 'How Running 3 Miles Every Day Affected Our Mental Health',
+      'description': 'How Running 3 Miles Every \nDay Affected Our Mental Health',
       'subtitle': 'Finding Rhythm in Your Breath'
     },
     // Add more videos and descriptions here
@@ -253,15 +253,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          'Bodhimind Player',
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-        ),
-        backgroundColor: Colors.black,
-      ),
+      // appBar: AppBar(
+      //   iconTheme: const IconThemeData(color: Colors.white),
+      //   title: const Text(
+      //     'Bodhimind Player',
+      //     style: TextStyle(
+      //         color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
+      //   ),
+      //   backgroundColor: Colors.black,
+      // ),
       body: Column(children: [
         Expanded(
           child: _isYoutube
