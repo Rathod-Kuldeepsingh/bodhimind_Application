@@ -1,6 +1,7 @@
 // ignore: unused_import
 // ignore_for_file: unused_import, duplicate_ignore
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
@@ -15,6 +16,7 @@ import 'package:shubham_test/common_problem/comm_list.dart';
 // ignore: unused_import
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
+
 import 'package:shubham_test/otp_screen/email.dart';
 import 'package:shubham_test/otp_screen/mobile.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
@@ -39,52 +41,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "Professional Support",
     "Guided Exercises",
     "Psychological Game",
-    "Maitreya Chatbot"
+    "Maitreya Chatbot",
+    
   ];
 
 
   List<Color> colors =[
-    const  Color(0xFF33C4FF),
-    const Color.fromARGB(255, 244, 59, 59),
-    const  Color(0xFF334DFF),
-    const  Color(0xFFFFDC33),
-    const  Color(0xFFBAFF33),
-    const  Color(0xFF33FFE4),
+    // const  Color(0xFF33C4FF),
+    // const Color.fromARGB(255, 244, 59, 59),
+    // const  Color(0xFF334DFF),
+    // const  Color(0xFFFFDC33),
+    // const  Color(0xFFBAFF33),
+    // const  Color(0xFF33FFE4),
   ];
 
 
-  List<HugeIcon> icons = [
-    const HugeIcon(
-      icon: HugeIcons.strokeRoundedResourcesAdd,
-      color: Colors.white,
-      size: 60,
-    ),
-    const HugeIcon(
-      icon: HugeIcons.strokeRoundedHealtcare,
-      color: Colors.white,
-      size: 60,
-      
-    ),
-    const HugeIcon(
-      icon: HugeIcons.strokeRoundedComputerProtection,
-      color: Colors.white,
-      size: 60,
-    ),
-    const HugeIcon(
-      icon: HugeIcons.strokeRoundedVideo02,
-      color: Colors.white,
-      size: 60,
-    ),
-    const HugeIcon(
-      icon: HugeIcons.strokeRoundedGame,
-      color: Colors.white,
-      size: 60,
-    ),
-     const HugeIcon(
-      icon: HugeIcons.strokeRoundedAiChat01,
-      color: Colors.white,
-      size: 60,
-    ),
+  List<Image> icons = [
+    Image.asset('asset/online-library.png',width: 78,),
+    Image.asset('asset/strain.png',fit: BoxFit.cover),
+    Image.asset('asset/support.png',width: 78,),
+    Image.asset('asset/hinduist-yoga-position.png',width: 80,),
+    Image.asset('asset/joystick.png',width: 78,),
+    Image.asset('asset/robot-assistant.png',width: 78,),
   ];
 
   List categoriesscreen =[
@@ -95,6 +73,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
    const home_screen(),
    const HomePage()
   ];
+  List<String> imgList = [
+    'asset/k1.jpeg',
+    'asset/k2.jpeg',
+    'asset/k3.jpeg',
+    'asset/k4.jpeg',
+    
+  ];
+
+   // ignore: unused_field
+   int _currentIndex = 0;
 
   
   @override
@@ -245,7 +233,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 height: 100,
                                 width: 100,
                                 decoration: BoxDecoration(
-                                  color: colors[index],
+                                 // color: colors[index],
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Center(
@@ -261,6 +249,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     name[index],
                                     style: const TextStyle(
                                         fontSize: 15, fontWeight: FontWeight.w500),
+                                        textAlign: TextAlign.justify,
                                   ),
                               ),
                              
@@ -272,9 +261,74 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     )
                   ],
                 ),
+              ),
+              Column(
+                children: [
+                  Padding(
+        padding: const EdgeInsets.only(top: 40),
+        child: Column(
+          children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 5),
+                height: 200,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+              ),
+              items: imgList.map((item) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.asset(item, fit: BoxFit.cover),
+                      
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 10),
+            //this for smooth indicator
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: imgList.asMap().entries.map((entry) {
+            //     return GestureDetector(
+            //       onTap: () => setState(() {
+            //         _currentIndex = entry.key;
+            //       }),
+            //       child: Container(
+            //         width: 20.0,
+            //         height: 10.0,
+            //         margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 4.0),
+            //         decoration: BoxDecoration(
+            //           shape: BoxShape.circle,
+            //           color: Colors.black
+            //               .withOpacity(_currentIndex == entry.key ? 1 : 0.4),
+            //         ),
+            //       ),
+            //     );
+            //   }).toList(),
+            // ),
+          ],
+        ),
+      ),
+                ],
               )
             ],
           ),
+          
         ),
       ),
 

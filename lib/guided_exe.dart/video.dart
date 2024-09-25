@@ -148,7 +148,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
         backgroundColor: Colors.white,
         toolbarHeight: 80,
         title: Text(
-          'Guided Execsise',
+          'Guided Exercise',
           style: GoogleFonts.openSans(
               textStyle:
                   const TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),

@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, use_build_context_synchronously
 
 import 'dart:collection';
 
@@ -51,7 +51,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home: const Splash(),
+    home: const Bottomnavigation(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),
