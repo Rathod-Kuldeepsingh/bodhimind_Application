@@ -28,6 +28,17 @@ import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/firebase_options.dart';
+import 'package:shubham_test/game/psychologicalgame.dart';
+import 'package:shubham_test/gamecontent/energy.dart';
+import 'package:shubham_test/gamecontent/focus.dart';
+import 'package:shubham_test/gamecontent/brainiton.dart';
+import 'package:shubham_test/gamecontent/braintest.dart';
+import 'package:shubham_test/gamecontent/elevate.dart';
+import 'package:shubham_test/gamecontent/hex.dart';
+import 'package:shubham_test/gamecontent/infinityloop.dart';
+import 'package:shubham_test/gamecontent/mindpal.dart';
+import 'package:shubham_test/gamecontent/neuronation.dart';
+import 'package:shubham_test/gamecontent/twodots.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/user_authentication/sign_screen.dart';
@@ -51,7 +62,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home: const Bottomnavigation(),
+    home:  const Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),

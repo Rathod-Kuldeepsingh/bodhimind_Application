@@ -54,6 +54,7 @@ dependencies:
   chewie: ^1.8.5
   youtube_player_flutter: ^8.0.0
   carousel_slider:
+  url_launcher:
   
 
 dev_dependencies:
