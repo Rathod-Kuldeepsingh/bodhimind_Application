@@ -20,6 +20,7 @@ import 'package:shubham_test/guided_exe.dart/video.dart';
 
 import 'package:shubham_test/otp_screen/email.dart';
 import 'package:shubham_test/otp_screen/mobile.dart';
+import 'package:shubham_test/professional%20support/prof_support.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 // ignore: unused_import
 import 'package:shubham_test/main.dart';
@@ -81,7 +82,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List categoriesscreen = [
     const Loginpage(),
     Common_problem(),
-    const SignScreen(),
+    const ProfSupport(),
     const VideoListScreen(),
     const PsychologicalGame(),
     const HomePage()

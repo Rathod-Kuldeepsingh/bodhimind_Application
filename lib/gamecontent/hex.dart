@@ -98,7 +98,7 @@ class Hex extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20, right: 290),
+              padding: const EdgeInsets.only(top: 20, right: 270,bottom: 40),
               child: Column(
                 children: [
                   Image.asset(
