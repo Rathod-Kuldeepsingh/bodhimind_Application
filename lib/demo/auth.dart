@@ -5,6 +5,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
+  // Sign in with Google
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -21,15 +22,30 @@ class AuthService {
       );
 
       final UserCredential userCredential = await _auth.signInWithCredential(credential);
-      return userCredential.user;
+      return userCredential.user; // Return the user
     } catch (e) {
       print(e); // Handle error appropriately
-      return null;
+      return null; // Return null on error
     }
   }
 
+  // Sign out
   Future<void> signOut() async {
     await _auth.signOut();
     await _googleSignIn.signOut();
+  }
+
+  // Login user with email and password
+  Future<User?> loginUserWithEmailAndPassword(String email, String password) async {
+    try {
+      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential.user; // Return the user
+    } catch (e) {
+      print(e); // Handle error appropriately
+      return null; // Return null on error
+    }
   }
 }

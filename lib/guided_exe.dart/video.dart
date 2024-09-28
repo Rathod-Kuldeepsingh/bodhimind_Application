@@ -153,12 +153,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
               textStyle:
                   const TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.pushNamed(context, '/bottomnavigation'),
-          icon: const Icon(Icons.arrow_back),
-          iconSize: 30,
-          color: Colors.black,
-        ),
+        
       ),
       body: ListView.builder(
         itemCount: videoDetails.length,

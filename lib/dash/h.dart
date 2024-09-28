@@ -40,7 +40,7 @@ class _HomescreenState extends State<Homescreen> {
     );
   }
   goToLogin(BuildContext context)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context)=> const Loginpage()),
+        context, MaterialPageRoute(builder: (context)=> const LoginPage()),
       );
        goTohome(BuildContext context)=> Navigator.push(
         context, MaterialPageRoute(builder: (context)=> const Homescreen()),

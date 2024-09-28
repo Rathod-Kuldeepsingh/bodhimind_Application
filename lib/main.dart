@@ -65,14 +65,14 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home:   BookListScreen(),
+    home:  const Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),
       "/bottomnavigation": (context) => const Bottomnavigation(),
-      "/Loginpage": (context) => const Loginpage(),
+      "/Loginpage": (context) => const LoginPage(),
       "/Dashboard": (context) => const DashboardScreen(),
-      "/Signpage": (context) => const SignScreen(),
+      "/Signpage": (context) =>  SignScreen(),
       "/Homescreen": (context) => const home_screen(),
       "/Otpscreen": (context) => const OtpScreen(),
       "/Otpscreen1": (context) => const OtpScreen1(),
@@ -113,6 +113,6 @@ class _home_screenState extends State<home_screen> {
   }
   goToLogin(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Loginpage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
 }

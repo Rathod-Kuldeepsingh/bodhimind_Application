@@ -1,3 +1,4 @@
+
 // ignore_for_file: unused_import
 
 import 'dart:ffi';
@@ -14,6 +15,7 @@ import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/demo/auth.dart';
+import 'package:shubham_test/firestore/adddata.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/main.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
@@ -28,15 +30,47 @@ class SignScreen extends StatefulWidget {
 }
 
 class _SignScreenState extends State<SignScreen> {
+  final FirebaseAuth _authe= FirebaseAuth.instance;
+  final UserService _userService = UserService();
+
+  
   final _auth = Authservice();
 
 
  final AuthService _authService = AuthService();// google authentication
  
-  final _email = TextEditingController();
-  final _password = TextEditingController();
-  final _fullname = TextEditingController();
-  final _mobile = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _fullname = TextEditingController();
+  final TextEditingController _mobile = TextEditingController();
+Future<void> _registerUser(BuildContext context) async {
+    try {
+      
+        final user =
+        await _auth.createUserWithEmailAndPAssword(_email.text, _password.text) ;
+        if (user != null) {
+      // log("user is created succesful" as num);
+      goTohome(context);
+
+      }
+
+      // Add user details to Firestore
+      await FirebaseFirestore.instance.collection('users').add({
+       'fullname': _fullname.text,
+        'email': _email.text,
+       'mobile': _mobile.text,
+       'password': _password.text,
+    }
+      );
+
+      // Navigate to profile page or show success message
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User registered!')));
+    } catch (e) {
+      print("Error: $e");
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+    }
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -55,7 +89,7 @@ class _SignScreenState extends State<SignScreen> {
     return null;
   }
 
-  bool _isVisible = false;
+ bool _isVisible = false;
 // validation for name
 
   String? validateName(String? name) {
@@ -212,11 +246,11 @@ class _SignScreenState extends State<SignScreen> {
                           borderRadius: BorderRadius.circular(32),
                         ),
                         suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _isVisible = !_isVisible;
-                            });
-                          },
+                         onPressed: () {
+                          setState(() {
+                            _isVisible = !_isVisible;
+                          });
+                        },
                           icon: _isVisible
                               ? const Icon(
                                   Icons.remove_red_eye_sharp,
@@ -240,7 +274,7 @@ class _SignScreenState extends State<SignScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           _submitForm();
-                          _signup();
+                          _registerUser(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -320,32 +354,23 @@ class _SignScreenState extends State<SignScreen> {
 
   goToLogin(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Loginpage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
   goTohome(BuildContext context) => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const  Bottomnavigation()),
       );
 
-  _signup() async {
-    final user =
-        await _auth.createUserWithEmailAndPAssword(_email.text, _password.text);
-    if (user != null) {
-      // log("user is created succesful" as num);
-      goTohome(context);
+  // _signup() async {
+  //   final user =
+  //       await _auth.createUserWithEmailAndPAssword(_email.text, _password.text);
+  //   if (user != null) {
+  //     // log("user is created succesful" as num);
+  //     goTohome(context);
 
-      addUserDetails(_fullname.text.trim(), int.parse(_mobile.text.trim()),
-          _email.text.trim(), _password.text.trim());
-    }
-  }
+  //     }
+  // }
 
-  Future<void> addUserDetails(
-      String fullname, int number, String email, String password) async {
-    await FirebaseFirestore.instance.collection('users').add({
-      'Fullname': fullname,
-      'Mobile Number': number,
-      'email': email,
-      'password': password,
-    });
-  }
+  
+  
 }

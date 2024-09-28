@@ -37,7 +37,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   // ignore: unused_field
   final _auth = Authservice();
-  
+
 
   List name = [
     //"Resources Library",
@@ -252,7 +252,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               children: [
                                 SizedBox(
                                   child: Container(
-                                    height: 120,
+                                    height: 110,
                                     width: 100,
                                     decoration: BoxDecoration(
                                       // color: colors[index],
@@ -385,7 +385,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   goToLogin(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Loginpage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
   // goTohome(BuildContext context) => Navigator.push(
   //       context,

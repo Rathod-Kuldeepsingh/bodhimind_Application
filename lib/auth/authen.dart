@@ -48,21 +48,20 @@ class Authservice {
     return null;
   }
  
-  Future<User?> loginUserWithEmailAndPAssword(
-    String email,
-    String password,
-  ) async {
-    try {
-      final cred = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return cred.user;
-    } catch (e) {
-      if (kDebugMode) {
-        print("Something went Wrong");
-      }
-    }
-    return null;
+  Future<User?> loginUserWithEmailAndPassword(String email, String password) async {
+  // Example code
+  try {
+    final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user; // Return user if successful
+  } catch (e) {
+    // Handle specific error codes if necessary
+    throw e; // Rethrow the error to handle in LoginPage
   }
+}
+
 
   Future<void> signOut() async {
     try {
@@ -80,5 +79,8 @@ class Authservice {
       {required String email,
       required String password,
     }) {}
+
+  signInWithGoogle() {}
 }
+
 

@@ -123,12 +123,7 @@ class Common_problem extends StatelessWidget {
                     fontSize: 24,
                     color: Colors.black,
                     fontWeight: FontWeight.w700))),
-        leading: IconButton(
-          onPressed: () => Navigator.pushNamed(context, '/bottomnavigation'),
-          icon: const Icon(Icons.arrow_back),
-          iconSize: 30,
-          color: Colors.black,
-        ),
+       
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
