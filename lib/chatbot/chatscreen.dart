@@ -22,9 +22,9 @@ class _HomePageState extends State<HomePage> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "User");
   ChatUser geminiUser = ChatUser(
     id: "1",
-    firstName: "Bodhimind",
+    firstName: "Maitreya",
     profileImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjJW5nveuVCmhSTesezJY9p4BiuIs1AimDsw&s",
+        "https://c8.alamy.com/comp/2R1CFM5/chatbot-logo-messenger-ai-robot-icon-vector-illustration-2R1CFM5.jpg",
   );
   @override
   Widget build(BuildContext context) {

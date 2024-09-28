@@ -11,6 +11,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/book/book.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
 import 'package:shubham_test/common_problem/comm_list.dart';
 // ignore: unused_import
@@ -36,9 +37,10 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   // ignore: unused_field
   final _auth = Authservice();
+  
 
   List name = [
-    "Resources Library",
+    //"Resources Library",
     "Common Problem",
     "Professional Support",
     "Guided Exercises",
@@ -56,10 +58,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   ];
 
   List<Image> icons = [
-    Image.asset(
-      'asset/online-library.png',
-      width: 78,
-    ),
+    // Image.asset(
+    //   'asset/online-library.png',
+    //   width: 78,
+    // ),
     Image.asset('asset/strain.png', fit: BoxFit.cover),
     Image.asset(
       'asset/support.png',
@@ -80,7 +82,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   ];
 
   List categoriesscreen = [
-    const Loginpage(),
+   // const Loginpage(),
     Common_problem(),
     const ProfSupport(),
     const VideoListScreen(),
@@ -88,15 +90,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const HomePage()
   ];
   List<String> imgList = [
-    'asset/k1.jpeg',
-    'asset/k2.jpeg',
-    'asset/k3.jpeg',
-    'asset/k4.jpeg',
+    'asset/JK.png',
+    'asset/OSho.png',
+    'asset/Quotes Instagram Post.png',
+    'asset/BUDhha.png',
+    'asset/Guru.png',
+    'asset/AG.png'
   ];
 
   // ignore: unused_field
   int _currentIndex = 0;
 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,38 +163,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Column(
                     children: [
                       SizedBox(
                         width: 380,
                         child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 50,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 234, 232, 232),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                    iconColor: Colors.black,
-                                    border: InputBorder.none,
-                                    prefixIcon: Icon(
-                                      Icons.search,
-                                      size: 30,
-                                    ),
-                                    hintText: "Search Here...",
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 33, 33, 33),
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ),
+              padding: const EdgeInsets.only(top: 10,bottom: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30), // Rounded corners
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      blurRadius: 6,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child:  const TextField(
+                    // controller: searchController,
+                    //   onChanged: _filterCategories,
+                  decoration: InputDecoration(
+                    hintText: 'Search here',hintStyle: TextStyle(
+                      color: Colors.black
+                    ),
+                    border: InputBorder.none, // Remove borders
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    suffixIcon: Icon(Icons.search, color: Colors.blue), // Custom search icon
+                  ),
+                ),
+                
+              ),
+            ),
                       ),
                     ],
                   )
@@ -239,33 +245,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               MaterialPageRoute(
                                   builder: (context) =>
                                       categoriesscreen[index])),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  // color: colors[index],
-                                  // border: Border.all(
-                                  //   width: 2,
-
-                                  // ),
-                                  borderRadius: BorderRadius.circular(20),
+                          child: Card(
+                             color: Colors.white,
+                              elevation: 5,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  child: Container(
+                                    height: 120,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      // color: colors[index],
+                                      // border: Border.all(
+                                      //   width: 2,
+                                                              
+                                      // ),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Center(
+                                      child: icons[index],
+                                    ),
+                                  ),
                                 ),
-                                child: Center(
-                                  child: icons[index],
+                                const SizedBox(
+                                  height: 20,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                name[index],
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
-                                textAlign: TextAlign.justify,
-                              ),
-                            ],
+                                Text(
+                                  name[index],
+                                  style: const TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.w500),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -297,8 +309,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         CarouselSlider(
                           options: CarouselOptions(
                             autoPlay: true,
-                            autoPlayInterval: const Duration(seconds: 5),
-                            height: 200,
+                            autoPlayInterval: const Duration(seconds: 3),
+                            height: 300,
                             onPageChanged: (index, reason) {
                               setState(() {
                                 _currentIndex = index;

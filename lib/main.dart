@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:get/get.dart';
 import 'package:shubham_test/auth/authen.dart';
+import 'package:shubham_test/book/book.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
 import 'package:shubham_test/chatbot/key.dart';
 import 'package:shubham_test/common_problem/BipolarDisorder.dart';
@@ -64,7 +65,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home: const Splash(),
+    home:   BookListScreen(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),

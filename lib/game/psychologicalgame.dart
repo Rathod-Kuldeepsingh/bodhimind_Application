@@ -142,30 +142,37 @@ class _PsychologicalGameState extends State<PsychologicalGame> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => categoriesscreen[index])),
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                // color: colors[index],
-
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: icons[index],
-                              ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Card(
+                            elevation: 5,
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    // color: colors[index],
+                            
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Center(
+                                    child: icons[index],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  name[index],
+                                  style: const TextStyle(
+                                      fontSize: 17, fontWeight: FontWeight.w600),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              name[index],
-                              style: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w600),
-                              textAlign: TextAlign.justify,
-                            ),
-                          ],
+                          ),
                         ),
                       );
                     },
