@@ -1,5 +1,5 @@
 
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, use_build_context_synchronously, avoid_print, unused_field
 
 import 'dart:ffi';
 import 'dart:math';
@@ -16,6 +16,7 @@ import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/demo/auth.dart';
 import 'package:shubham_test/firestore/adddata.dart';
+import 'package:shubham_test/profile/profile.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/main.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
@@ -51,20 +52,23 @@ Future<void> _registerUser(BuildContext context) async {
         if (user != null) {
       // log("user is created succesful" as num);
       goTohome(context);
-
+      // Navigator.pushReplacement(
+      //               context,
+      //               MaterialPageRoute(builder: (context) => UserProfileScreen()),
+      //             );
       }
 
-      // Add user details to Firestore
-      await FirebaseFirestore.instance.collection('users').add({
-       'fullname': _fullname.text,
-        'email': _email.text,
-       'mobile': _mobile.text,
-       'password': _password.text,
-    }
-      );
+    //   // Add user details to Firestore
+    //   await FirebaseFirestore.instance.collection('users').add({
+    //    'fullname': _fullname.text,
+    //     'email': _email.text,
+    //    'mobile': _mobile.text,
+    //    'password': _password.text,
+    // }
+    //   );
 
       // Navigate to profile page or show success message
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User registered!')));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('User registered!')));
     } catch (e) {
       print("Error: $e");
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
@@ -131,7 +135,7 @@ Future<void> _registerUser(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
       // Process the sign-up (e.g., send data to the server)
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Account Create Successfully')),
+        const SnackBar(content: Text('Account Create Successfully')),
       );
     }
   }

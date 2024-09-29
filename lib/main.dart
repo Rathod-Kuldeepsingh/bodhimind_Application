@@ -43,6 +43,7 @@ import 'package:shubham_test/gamecontent/twodots.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
 
 import 'package:shubham_test/professional%20support/prof_support.dart';
+import 'package:shubham_test/profile/profile.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/user_authentication/sign_screen.dart';
 import 'package:shubham_test/onscreen/onboarding_page.dart';
@@ -72,7 +73,7 @@ Future<void> main() async {
       "/bottomnavigation": (context) => const Bottomnavigation(),
       "/Loginpage": (context) => const LoginPage(),
       "/Dashboard": (context) => const DashboardScreen(),
-      "/Signpage": (context) =>  SignScreen(),
+      "/Signpage": (context) =>  const SignScreen(),
       "/Homescreen": (context) => const home_screen(),
       "/Otpscreen": (context) => const OtpScreen(),
       "/Otpscreen1": (context) => const OtpScreen1(),

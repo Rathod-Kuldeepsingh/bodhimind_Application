@@ -10,6 +10,8 @@ import 'package:shubham_test/dash/dashboard_screen.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/main.dart';
 
+import 'package:shubham_test/profile/profile.dart';
+
 
 class Bottomnavigation extends StatelessWidget {
   const Bottomnavigation({super.key});
@@ -79,7 +81,7 @@ class Bottomnavigation extends StatelessWidget {
 class NavigationBarController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
   
-  final screen = [ const DashboardScreen(), BookListScreen(),ArtifactListScreen(), const Homescreen()];
+  final screen = [ const DashboardScreen(), BookListScreen(),ArtifactListScreen(), UserProfileScreen()];
 
 
 }
