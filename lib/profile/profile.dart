@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shubham_test/auth/authen.dart';
-import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'User Profile',
       theme: ThemeData(
-        primaryColor: Colors.green, // WhatsApp color
+        primaryColor: Colors.green,
         appBarTheme: const AppBarTheme(
           color: Colors.green,
         ),
@@ -63,7 +62,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           });
         } else {
           await createUserDocument(user);
-          fetchUserData(); // Fetch data again after creating document
+          fetchUserData();
         }
       }
     } catch (e) {
@@ -125,18 +124,23 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-         automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Text('Profile',
-        style: GoogleFonts.openSans(
-          textStyle: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w600
-          )
-        ),),
+        title: Text(
+          'Profile',
+          style: GoogleFonts.openSans(
+            textStyle: TextStyle(
+              fontSize: screenWidth * 0.06,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_square),
@@ -165,10 +169,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : Padding(
-              padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenWidth * 0.1),
               child: Column(
                 children: [
-                 const CircleAvatar(
+                  const CircleAvatar(
                     radius: 60.0,
                     backgroundImage: NetworkImage(
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s'),
@@ -176,13 +180,16 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   const SizedBox(height: 20.0),
                   Text(
                     fullName.isNotEmpty ? fullName : 'No Name Provided',
-                    style: const TextStyle(
-                        fontSize: 24.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: screenWidth * 0.07,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10.0),
                   Text(
                     status.isNotEmpty ? status : 'No Status Provided',
-                    style: TextStyle(fontSize: 16.0, color: Colors.grey[600]),
+                    style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.grey[600]),
                   ),
                   const SizedBox(height: 30.0),
                   ListTile(
@@ -199,13 +206,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     title: Text(
                         address.isNotEmpty ? address : 'No Address Provided'),
                   ),
-                 const  SizedBox(
-                    height: 50,
-                  ),
+                  const SizedBox(height: 50),
                   Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment
-                          .center, // Center the button vertically
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
                           onPressed: () async {
@@ -213,24 +217,20 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             goToLogin(context);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[
-                                300], // Change the button background color
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 30.0), // Padding for the button
+                            backgroundColor: Colors.blue[300],
+                            padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03, horizontal: screenWidth * 0.1),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  30.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(30.0),
                             ),
-                            elevation: 5, // Shadow effect
+                            elevation: 5,
                           ),
-                          child: const Text(
+                          child: Text(
                             "Logout",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: screenWidth * 0.05,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white, // Text color
-                            ), // Text styling
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -245,10 +245,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   goToLogin(BuildContext context) => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
-  goTohome(BuildContext context) => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const Homescreen()),
       );
 }
 
@@ -302,22 +298,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-         automaticallyImplyLeading: false,
-        title: Text('Edit Profile',
-        style: GoogleFonts.openSans(
-          textStyle: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-          )
-        )),
-      backgroundColor: Colors.white,
-      toolbarHeight: 70, // Match the theme color
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Edit Profile',
+          style: GoogleFonts.openSans(
+            textStyle: TextStyle(
+              fontSize: screenWidth * 0.06,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+        toolbarHeight: 70,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 50,left: 20,right: 20),
+        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenWidth * 0.1),
         child: Column(
           children: [
             _buildTextField(fullNameController, 'Full Name'),
@@ -330,7 +331,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             const SizedBox(height: 20.0),
             _buildTextField(addressController, 'Address'),
             const SizedBox(height: 30.0),
-            const SizedBox(height: 40,),
             ElevatedButton(
               onPressed: () {
                 widget.onSave(
@@ -343,19 +343,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[300], // Button color
-                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0), // Padding
+                backgroundColor: Colors.blue[300],
+                padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03, horizontal: screenWidth * 0.1),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                elevation: 5, // Shadow effect
+                elevation: 5,
               ),
-              child: const Text(
+              child: Text(
                 "Save",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Text color
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -373,7 +373,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         labelText: label,
         labelStyle: const TextStyle(color: Colors.black),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.0), // Rounded corners for text fields
+          borderRadius: BorderRadius.circular(30.0),
           borderSide: const BorderSide(color: Colors.black),
         ),
         focusedBorder: OutlineInputBorder(
@@ -381,8 +381,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           borderSide: const BorderSide(color: Colors.black, width: 2.0),
         ),
         filled: true,
-        fillColor: Colors.white, // Light background color for text fields
+        fillColor: Colors.white,
       ),
     );
   }
 }
+

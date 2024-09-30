@@ -107,7 +107,7 @@ class _ProfSupportState extends State<ProfSupport> {
         specialityintreset: 'No Information',
         link: 'https://www.maxhealthcare.in/doctor/ms-vishakha-bhalla'),
 
-          SupportItem(
+    SupportItem(
         title: "Dr. Ajit Dandekar",
         description: 'Head\n'
             'Mental Health And Behavioural Sciences, Clinical Psychology, Psychiatry',
@@ -119,7 +119,7 @@ class _ProfSupportState extends State<ProfSupport> {
         specialityintreset: 'Depression, Stress Management, Psychotherapy, Counseling',
         link: 'https://www.maxhealthcare.in/doctor/dr-ajit-dandekar'),
 
-         SupportItem(
+    SupportItem(
         title: "Dr. Madhuri Singh",
         description: 'Consultant\n'
             'Mental Health And Behavioural Sciences, Clinical Psychology, Psychiatry',
@@ -131,19 +131,23 @@ class _ProfSupportState extends State<ProfSupport> {
         specialityintreset: 'Marriage and family counseling',
         link: 'https://www.maxhealthcare.in/doctor/dr-madhuri-singh'),
   ];
+
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text("Professional Support",
             style: GoogleFonts.openSans(
-                fontSize: 25, fontWeight: FontWeight.w600)),
+                fontSize: 25, fontWeight: FontWeight.w700)),
         toolbarHeight: 50,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: EdgeInsets.only(top: screenHeight * 0.05), // Responsive padding
         child: GridView.builder(
           padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -173,12 +177,11 @@ class _ProfSupportState extends State<ProfSupport> {
                   children: [
                     Image.asset(
                       supportItems[index].imageUrl,
-                      height: 100,
-                      width: 100,
-                      fit: BoxFit
-                          .cover, // This will help maintain the aspect ratio
+                      height: screenHeight * 0.13, // Responsive image height
+                      width: screenWidth * 0.2, // Responsive image width
+                      fit: BoxFit.cover, // This will help maintain the aspect ratio
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 20), // Adjusted spacing
                     Text(
                       supportItems[index].title,
                       style: const TextStyle(fontWeight: FontWeight.bold),

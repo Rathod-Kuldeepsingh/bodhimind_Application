@@ -12,24 +12,29 @@ class Sceen4 extends StatefulWidget {
 class _Sceen4State extends State<Sceen4> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
-       backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          const Padding(padding: EdgeInsets.only(top: 35)),
+          const Padding(padding: EdgeInsets.only(top: 35)), // Static top padding
           Lottie.asset("asset/faq.json"),
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: screenHeight * 0.1, // Responsive spacing
           ),
-          GradientText(" Mental Health FAQs ",
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-              colors: const [
-                Colors.blue,
-                Colors.red,
-                Colors.teal,
-              ]),
+          GradientText(
+            " Mental Health FAQs ",
+            style: const TextStyle(
+              fontSize: 30,
+            ),
+            colors: const [
+              Colors.blue,
+              Colors.red,
+              Colors.teal,
+            ],
+          ),
           const SizedBox(
             height: 30,
           ),
@@ -38,11 +43,13 @@ class _Sceen4State extends State<Sceen4> {
           ),
           const Center(
             child: Text(
-               " Understanding and conquering \n              common issues ",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                )),
+              " Understanding and conquering common issues ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+              ),
+              textAlign: TextAlign.center, // Center text alignment
+            ),
           ),
         ],
       ),

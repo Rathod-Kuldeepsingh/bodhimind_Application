@@ -1,4 +1,3 @@
-
 // ignore_for_file: unused_import, use_build_context_synchronously, avoid_print, unused_field
 
 import 'dart:ffi';
@@ -31,41 +30,32 @@ class SignScreen extends StatefulWidget {
 }
 
 class _SignScreenState extends State<SignScreen> {
-  final FirebaseAuth _authe= FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final UserService _userService = UserService();
+  final AuthService _authService = AuthService(); // Google authentication
 
-  
-  final _auth = Authservice();
-
-
- final AuthService _authService = AuthService();// google authentication
- 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _fullname = TextEditingController();
   final TextEditingController _mobile = TextEditingController();
-Future<void> _registerUser(BuildContext context) async {
+
+  Future<void> _registerUser(BuildContext context) async {
     try {
-      
-        final user =
-        await _auth.createUserWithEmailAndPAssword(_email.text, _password.text) ;
-        if (user != null) {
-      // log("user is created succesful" as num);
-      goTohome(context);
-      // Navigator.pushReplacement(
-      //               context,
-      //               MaterialPageRoute(builder: (context) => UserProfileScreen()),
-      //             );
+      final user = await _auth.createUserWithEmailAndPassword(
+        email: _email.text,
+        password: _password.text,
+      );
+      if (user != null) {
+        goTohome(context);
       }
 
-    //   // Add user details to Firestore
-    //   await FirebaseFirestore.instance.collection('users').add({
-    //    'fullname': _fullname.text,
-    //     'email': _email.text,
-    //    'mobile': _mobile.text,
-    //    'password': _password.text,
-    // }
-    //   );
+      // Uncomment to add user details to Firestore
+      // await FirebaseFirestore.instance.collection('users').add({
+      //   'fullname': _fullname.text,
+      //   'email': _email.text,
+      //   'mobile': _mobile.text,
+      //   'password': _password.text,
+      // });
 
       // Navigate to profile page or show success message
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('User registered!')));
@@ -88,14 +78,14 @@ Future<void> _registerUser(BuildContext context) async {
     RegExp emailRegex = RegExp(r'^[\w\.-]+@[\w-]+\.\w{2,3}(\.\w{2,3})?$');
     final isEmailValid = emailRegex.hasMatch(email ?? '');
     if (!isEmailValid) {
-      return 'Please Enter the a valid email';
+      return 'Please Enter a valid email';
     }
     return null;
   }
 
- bool _isVisible = false;
-// validation for name
+  bool _isVisible = false;
 
+  // Validation for name
   String? validateName(String? name) {
     if (name == null || name.isEmpty) {
       return 'Name is required';
@@ -135,13 +125,15 @@ Future<void> _registerUser(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
       // Process the sign-up (e.g., send data to the server)
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Account Create Successfully')),
+        const SnackBar(content: Text('Account Created Successfully')),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -153,128 +145,112 @@ Future<void> _registerUser(BuildContext context) async {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Lottie.asset("asset/sign.json"),
-                const SizedBox(
-                  height: 30,
+                const SizedBox(height: 30),
+                Center(
+                  child: const Text(
+                    "Create New Account",
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
-                const Center(
-                    child: Text(
-                  "Create New Account ",
-                  style: TextStyle(fontSize: 25),
-                )),
-                const SizedBox(
-                  height: 10,
+                const SizedBox(height: 10),
+                Center(
+                  child: const Text(
+                    "Create your profile to start your journey.",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  ),
                 ),
-                const Center(
-                    child: Text(
-                  "Create your profile to start your journey. ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
-                )),
                 const SizedBox(height: 20),
-                SizedBox(
-                  width: 400,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextFormField(
-                      controller: _fullname,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline_outlined,
-                            size: 25,
-                          ),
-                          labelText: " Full Name",
-                          hintText: "  Full Name",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32),
-                          )),
-                      validator: validateName,
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                    controller: _fullname,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.person_outline_outlined,
+                        size: 25,
+                      ),
+                      labelText: "Full Name",
+                      hintText: "Full Name",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
                     ),
+                    validator: validateName,
                   ),
                 ),
-                SizedBox(
-                  width: 400,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextFormField(
-                      controller: _email,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.email_outlined,
-                            size: 25,
-                          ),
-                          labelText: "  Email",
-                          hintText: "  Email",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32),
-                          )),
-                      validator: validateEmail,
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                    controller: _email,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        size: 25,
+                      ),
+                      labelText: "Email",
+                      hintText: "Email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
                     ),
+                    validator: validateEmail,
                   ),
                 ),
-                SizedBox(
-                  width: 400,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextFormField(
-                      controller: _mobile,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.mobile_friendly_outlined,
-                            size: 25,
-                          ),
-                          labelText: " Mobile Number",
-                          hintText: "  Mobile Number",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32),
-                          )),
-                      validator: validateMobile,
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                    controller: _mobile,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.mobile_friendly_outlined,
+                        size: 25,
+                      ),
+                      labelText: "Mobile Number",
+                      hintText: "Mobile Number",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
                     ),
+                    validator: validateMobile,
                   ),
                 ),
-                SizedBox(
-                  width: 400,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextFormField(
-                      controller: _password,
-                      obscureText: _isVisible,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.fingerprint,
-                          size: 25,
-                        ),
-                        labelText: "  Password",
-                        hintText: "  Password",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                        suffixIcon: IconButton(
-                         onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: TextFormField(
+                    controller: _password,
+                    obscureText: !_isVisible,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.fingerprint,
+                        size: 25,
+                      ),
+                      labelText: "Password",
+                      hintText: "Password",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
                           setState(() {
                             _isVisible = !_isVisible;
                           });
                         },
-                          icon: _isVisible
-                              ? const Icon(
-                                  Icons.remove_red_eye_sharp,
-                                  size: 20,
-                                )
-                              : const Icon(Icons.visibility_off),
-                        ),
+                        icon: _isVisible
+                            ? const Icon(Icons.remove_red_eye_sharp, size: 20)
+                            : const Icon(Icons.visibility_off),
                       ),
-                      validator: validatePassword,
                     ),
+                    validator: validatePassword,
                   ),
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
+                const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.all(0),
                   child: Center(
                     child: SizedBox(
-                      width: 210,
+                      width: screenWidth * 0.5, // Adjusted for responsiveness
                       child: ElevatedButton(
                         onPressed: () {
                           _submitForm();
@@ -294,59 +270,59 @@ Future<void> _registerUser(BuildContext context) async {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 const Center(
-                    child: Text(
-                  "OR",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                )),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 210,
-                    child: OutlinedButton.icon(
-                        onPressed: () async {
-                          User? user = await _authService.signInWithGoogle();
-                          if (user != null) {
-                            print('User signed in: ${user.displayName}');
-                          } else {
-                            print('Sign-in failed');
-                          }
-                        },
-                        icon: const Image(
-                          image: AssetImage("asset/google.png"),
-                          width: 30,
-                        ),
-                        label: const Text(
-                          "Sign With Google",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        )),
+                  child: Text(
+                    "OR",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+                const SizedBox(height: 10),
                 Center(
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/Loginpage");
+                  child: SizedBox(
+                    width: screenWidth * 0.5, // Adjusted for responsiveness
+                    child: OutlinedButton.icon(
+                      onPressed: () async {
+                        User? user = await _authService.signInWithGoogle();
+                        if (user != null) {
+                          print('User signed in: ${user.displayName}');
+                        } else {
+                          print('Sign-in failed');
+                        }
                       },
-                      child: const Text.rich(TextSpan(children: [
-                        TextSpan(
-                            text: "Already have an Accounr?",
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 17)),
-                        TextSpan(
-                            text: " Login",
-                            style: TextStyle(color: Colors.blue, fontSize: 17)),
-                      ]))),
+                      icon: const Image(
+                        image: AssetImage("asset/google.png"),
+                        width: 30,
+                      ),
+                      label: const Text(
+                        "Sign With Google",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Center(
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/Loginpage");
+                        },
+                        child: const Text.rich(TextSpan(children: [
+                          TextSpan(
+                              text: "Already have an Account?",
+                              style: TextStyle(color: Colors.black, fontSize: 17)),
+                          TextSpan(
+                              text: " Login",
+                              style: TextStyle(color: Colors.blue, fontSize: 17)),
+                        ])),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -360,21 +336,9 @@ Future<void> _registerUser(BuildContext context) async {
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
       );
+
   goTohome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const  Bottomnavigation()),
+        MaterialPageRoute(builder: (context) => const Bottomnavigation()),
       );
-
-  // _signup() async {
-  //   final user =
-  //       await _auth.createUserWithEmailAndPAssword(_email.text, _password.text);
-  //   if (user != null) {
-  //     // log("user is created succesful" as num);
-  //     goTohome(context);
-
-  //     }
-  // }
-
-  
-  
 }

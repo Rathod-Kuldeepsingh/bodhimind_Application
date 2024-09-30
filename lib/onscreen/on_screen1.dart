@@ -12,38 +12,49 @@ class Sceen1 extends StatefulWidget {
 class _Sceen1State extends State<Sceen1> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const Padding(padding: EdgeInsets.only(top: 35)),
+          const Padding(padding: EdgeInsets.only(top: 35)), // Static top padding
           Lottie.asset("asset/s.json"),
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: screenHeight * 0.1, // Responsive spacing
           ),
-          GradientText(" Maitreya ",
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-              colors: const [
-                Colors.blue,
-                Colors.red,
-                Colors.teal,
-              ]),
-          const SizedBox(
-            height: 30,
+          GradientText(
+            " Maitreya ",
+            style: const TextStyle(
+              fontSize: 30,
+            ),
+            colors: const [
+              Colors.blue,
+              Colors.red,
+              Colors.teal,
+            ],
+          ),
+          SizedBox(
+            height: screenHeight * 0.05, // Responsive spacing
           ),
           const SizedBox(
             height: 20,
           ),
-       const Center(
-         child: Text(
-                " Here The Voice Of Wisdom, Discover \n         Serenity with Every Chat",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                )),
-       ),
+          const Center(
+            child: Column(
+              children: [
+                Text(
+                  " Here The Voice Of Wisdom, Discover \n         Serenity with Every Chat",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center, // Center text alignment
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

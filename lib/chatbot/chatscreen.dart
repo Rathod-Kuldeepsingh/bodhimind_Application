@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -33,17 +34,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: GradientText("Maitreya",
-              style: const TextStyle(
+        title: Text("Maitreya",
+              style: GoogleFonts.openSans(
+                textStyle: const TextStyle(
                 fontSize: 25,
                 letterSpacing: 2,
-                fontWeight: FontWeight.w600
+                fontWeight: FontWeight.w700
               ),
-              colors: const [
-                Colors.blue,
-                Colors.red,
-                Colors.teal,
-              ]),
+              ) 
+              ),
              
       ),
       body: _buildUI(),

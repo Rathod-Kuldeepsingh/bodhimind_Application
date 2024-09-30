@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
@@ -157,8 +159,11 @@ class _PsychologicalGameState extends State<PsychologicalGame> {
                             
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: Center(
-                                    child: icons[index],
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20.0),
+                                    child: Center(
+                                      child: icons[index],
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(

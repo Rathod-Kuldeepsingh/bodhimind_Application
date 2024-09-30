@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:get/get.dart';
+import 'package:shubham_test/Get_started/get_stared.dart';
+import 'package:shubham_test/artical/artical.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/book/book.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
@@ -66,7 +68,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home:  const Splash(),
+    home:    ArtifactListScreen(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),

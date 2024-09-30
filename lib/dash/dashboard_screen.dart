@@ -38,7 +38,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // ignore: unused_field
   final _auth = Authservice();
 
-
   List name = [
     //"Resources Library",
     "Common Problem",
@@ -82,7 +81,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   ];
 
   List categoriesscreen = [
-   // const Loginpage(),
+    // const Loginpage(),
     Common_problem(),
     const ProfSupport(),
     const VideoListScreen(),
@@ -101,9 +100,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // ignore: unused_field
   int _currentIndex = 0;
 
- 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -166,36 +166,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Column(
                     children: [
                       SizedBox(
-                        width: 380,
+                        width: screenWidth * 0.9, // Adjusted for responsiveness
                         child: Padding(
-              padding: const EdgeInsets.only(top: 10,bottom: 10),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30), // Rounded corners
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 6,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child:  const TextField(
-                    // controller: searchController,
-                    //   onChanged: _filterCategories,
-                  decoration: InputDecoration(
-                    hintText: 'Search here',hintStyle: TextStyle(
-                      color: Colors.black
-                    ),
-                    border: InputBorder.none, // Remove borders
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    suffixIcon: Icon(Icons.search, color: Colors.blue), // Custom search icon
-                  ),
-                ),
-                
-              ),
-            ),
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30), // Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: const TextField(
+                              // controller: searchController,
+                              //   onChanged: _filterCategories,
+                              decoration: InputDecoration(
+                                hintText: 'Search here',
+                                hintStyle: TextStyle(color: Colors.black),
+                                border: InputBorder.none, // Remove borders
+                                contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                suffixIcon: Icon(Icons.search, color: Colors.blue), // Custom search icon
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   )
@@ -246,8 +244,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   builder: (context) =>
                                       categoriesscreen[index])),
                           child: Card(
-                             color: Colors.white,
-                              elevation: 5,
+                            color: Colors.white,
+                            elevation: 5,
                             child: Column(
                               children: [
                                 SizedBox(
@@ -255,11 +253,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     height: 110,
                                     width: 100,
                                     decoration: BoxDecoration(
-                                      // color: colors[index],
-                                      // border: Border.all(
-                                      //   width: 2,
-                                                              
-                                      // ),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Center(
@@ -289,17 +282,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  
                   Padding(
-                    padding: const EdgeInsets.only(top: 30,left: 20),
+                    padding: const EdgeInsets.only(top: 30, left: 20),
                     child: Text(
-                      'Bodhimind Quotes',
+                      'Wisdom',
                       style: GoogleFonts.openSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
-                        
                       ),
-                      
                     ),
                   ),
                   Padding(

@@ -13,47 +13,52 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-
-   @override
-  void initState(){
+  void initState() {
     super.initState();
     _navigatetohome();
   }
 
-
-  _navigatetohome() async{
-     await Future.delayed( const Duration(seconds: 5),(){});
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Wrapper()));
+  _navigatetohome() async {
+    await Future.delayed(const Duration(seconds: 5), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Wrapper()));
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
-            children:[
+            mainAxisAlignment: MainAxisAlignment.center, // Center the content
+            children: [
               Padding(
-                padding: const  EdgeInsets.only(top: 350),
-               child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Lottie.asset("asset/splash.json")),
-                
-             ),
-           GradientText("Bodhimind",
-              style: const TextStyle(
-                fontSize: 20,
-                letterSpacing: 2,
-                fontWeight: FontWeight.w600
+                padding: EdgeInsets.only(top: screenHeight * 0.3), // Responsive top padding
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Lottie.asset("asset/splash.json"),
+                ),
               ),
-              colors: const [
-                Colors.blue,
-                Colors.red,
-                Colors.teal,
-              ]),
-         ], ),
+              GradientText(
+                "Bodhimind",
+                style: const TextStyle(
+                  fontSize: 20,
+                  letterSpacing: 2,
+                  fontWeight: FontWeight.w600,
+                ),
+                colors: const [
+                  Colors.blue,
+                  Colors.red,
+                  Colors.teal,
+                ],
+              ),
+            ],
+          ),
         ),
-      )
+      ),
     );
   }
 }

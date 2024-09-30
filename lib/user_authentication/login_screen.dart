@@ -47,13 +47,12 @@ class _LoginPageState extends State<LoginPage> {
         User? user = await _auth.loginUserWithEmailAndPassword(_email.text, _password.text);
         if (user != null) {
           // If successful, navigate to home
-            _showSnackBar("Account Login Succesfully");
+          _showSnackBar("Account Login Successfully");
           goToHome(context);
-        } 
-       } 
-       catch (e) {
+        }
+      } catch (e) {
         _showSnackBar("Invalid email or password");
-       }
+      }
     }
   }
 
@@ -70,6 +69,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -82,56 +83,76 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Lottie.asset("asset/login.json"),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "Welcome Back!",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  child: Column(
+                    children: [
+                      Lottie.asset("asset/login.json"),
+                    ],
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "Make it work, Make it right, Make it fast",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Welcome Back!",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                      ),
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Make it work, Make it right, Make it fast",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: TextFormField(
-                    controller: _email,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.person_outline_outlined, size: 25),
-                      labelText: "Email",
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-                    ),
-                    validator: validateEmail,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _email,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.person_outline_outlined, size: 25),
+                          labelText: "Email",
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
+                        ),
+                        validator: validateEmail,
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: TextFormField(
-                    controller: _password,
-                    obscureText: !_isVisible,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.fingerprint, size: 25),
-                      labelText: "Password",
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _isVisible = !_isVisible;
-                          });
-                        },
-                        icon: Icon(_isVisible ? Icons.remove_red_eye : Icons.visibility_off),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _password,
+                        obscureText: !_isVisible,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.fingerprint, size: 25),
+                          labelText: "Password",
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _isVisible = !_isVisible;
+                              });
+                            },
+                            icon: Icon(_isVisible ? Icons.remove_red_eye : Icons.visibility_off),
+                          ),
+                        ),
+                        validator: (password) => (password != null && password.length < 8)
+                            ? 'Please enter a valid password'
+                            : null,
                       ),
-                    ),
-                    validator: (password) => (password != null && password.length < 8)
-                        ? 'Please enter a valid password'
-                        : null,
+                    ],
                   ),
                 ),
                 Align(
@@ -140,18 +161,26 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       // Handle forget password
                     },
-                    child: const Text("Forget Password?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                    child: const Column(
+                      children: [
+                        Text("Forget Password?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
                   child: Center(
                     child: SizedBox(
-                      width: 170,
-                      child: ElevatedButton(
-                        onPressed: _login,
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                        child: const Text("Login", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                      width: screenWidth * 0.5, // Adjusted for responsiveness
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: _login,
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                            child: const Text("Login", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -159,29 +188,37 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 20),
                 Center(
                   child: SizedBox(
-                    width: 230,
-                    child: OutlinedButton.icon(
-                      onPressed: () async {
-                        User? user = (await _authService.loginWithGoogle()) as User?;
-                        if (user != null) {
-                          _showSnackBar('User signed in: ${user.displayName}');
-                          goToHome(context);
-                        } else {
-                          _showSnackBar('Sign-in failed');
-                        }
-                      },
-                      icon: const Image(image: AssetImage("asset/google.png"), width: 30),
-                      label: const Text("Sign In With Google", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black)),
+                    width: screenWidth * 0.7, // Adjusted for responsiveness
+                    child: Column(
+                      children: [
+                        OutlinedButton.icon(
+                          onPressed: () async {
+                            User? user = (await _authService.loginWithGoogle()) as User?;
+                            if (user != null) {
+                              _showSnackBar('User signed in: ${user.displayName}');
+                              goToHome(context);
+                            } else {
+                              _showSnackBar('Sign-in failed');
+                            }
+                          },
+                          icon: const Image(image: AssetImage("asset/google.png"), width: 30),
+                          label: const Text("Sign In With Google", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 6),
                 Center(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/Signpage");
-                    },
-                    child: const Text("Create a new Account?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/Signpage");
+                        },
+                        child: const Text("Create a new Account?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                      ),
+                    ],
                   ),
                 ),
               ],

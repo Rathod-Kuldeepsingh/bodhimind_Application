@@ -68,8 +68,8 @@ class _VideoListScreenState extends State<VideoListScreen> {
       'description': 'How Running 3 Miles Every \nDay Affected Our Mental Health',
       'subtitle': 'Finding Rhythm in Your Breath'
     },
-    // Add more videos and descriptions here
   ];
+
   final List<Color> color = [
     const Color.fromARGB(255, 219, 68, 245),
     const Color.fromARGB(255, 27, 154, 238),
@@ -83,6 +83,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
     const Color.fromARGB(255, 232, 246, 75),
     const Color.fromARGB(255, 27, 154, 238),
   ];
+
   final List<Image> images = [
     Image.asset(
       "asset/meditation.png",
@@ -129,7 +130,7 @@ class _VideoListScreenState extends State<VideoListScreen> {
       width: 70,
       alignment: Alignment.topLeft,
     ),
-      Image.asset(
+    Image.asset(
       "asset/self-care.png",
       width: 70,
       alignment: Alignment.topLeft,
@@ -140,8 +141,12 @@ class _VideoListScreenState extends State<VideoListScreen> {
       alignment: Alignment.topLeft,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -153,14 +158,11 @@ class _VideoListScreenState extends State<VideoListScreen> {
               textStyle:
                   const TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),
         ),
-        
       ),
       body: ListView.builder(
         itemCount: videoDetails.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-              // title: Text(title[index]),
-              // subtitle: Text(videoDetails[index]['description']!),
               onTap: () {
                 Navigator.push(
                   context,
@@ -247,59 +249,51 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      // appBar: AppBar(
-      //   iconTheme: const IconThemeData(color: Colors.white),
-      //   title: const Text(
-      //     'Bodhimind Player',
-      //     style: TextStyle(
-      //         color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),
-      //   ),
-      //   backgroundColor: Colors.black,
-      // ),
-      body: Column(children: [
-        Expanded(
-          child: _isYoutube
-              ? YoutubePlayer(
-                  controller: _youtubeController,
-                  showVideoProgressIndicator: true,
-                )
-              : Column(
-                  children: [
-                    _videoController.value.isInitialized
-                        ? AspectRatio(
-                            aspectRatio: _videoController.value.aspectRatio,
-                            child: VideoPlayer(_videoController),
-                          )
-                        : Container(),
-                    VideoProgressIndicator(
-                      _videoController,
-                      allowScrubbing: true,
-                    ),
-                    IconButton(
-                      icon: Icon(_videoController.value.isPlaying
-                          ? Icons.pause
-                          : Icons.play_arrow),
-                      onPressed: () {
-                        setState(() {
-                          _videoController.value.isPlaying
-                              ? _videoController.pause()
-                              : _videoController.play();
-                        });
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        widget.description,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
+      child: Scaffold(
+        body: Column(children: [
+          Expanded(
+            child: _isYoutube
+                ? YoutubePlayer(
+                    controller: _youtubeController,
+                    showVideoProgressIndicator: true,
+                  )
+                : Column(
+                    children: [
+                      _videoController.value.isInitialized
+                          ? AspectRatio(
+                              aspectRatio: _videoController.value.aspectRatio,
+                              child: VideoPlayer(_videoController),
+                            )
+                          : Container(),
+                      VideoProgressIndicator(
+                        _videoController,
+                        allowScrubbing: true,
                       ),
-                    ),
-                  ],
-                ),
-        ),
-      ]),
-    ));
+                      IconButton(
+                        icon: Icon(_videoController.value.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow),
+                        onPressed: () {
+                          setState(() {
+                            _videoController.value.isPlaying
+                                ? _videoController.pause()
+                                : _videoController.play();
+                          });
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          widget.description,
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
+        ]),
+      ),
+    );
   }
 }

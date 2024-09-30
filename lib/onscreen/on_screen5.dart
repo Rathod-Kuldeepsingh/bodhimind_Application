@@ -12,24 +12,32 @@ class Sceen5 extends StatefulWidget {
 class _Sceen5State extends State<Sceen5> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+    final screenWidth = MediaQuery.of(context).size.width; // Get screen width
+
     return Scaffold(
-       backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          const Padding(padding: EdgeInsets.only(top: 70)),
+          const Padding(padding: EdgeInsets.only(top: 70)), // Static top padding
           Lottie.asset("asset/pro.json"),
-          const SizedBox(
-            height: 150,
+          SizedBox(
+            height: screenHeight * 0.15, // Responsive spacing
           ),
-          GradientText(" Professional Support ",
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-              colors: const [
-                Colors.blue,
-                Colors.red,
-                Colors.teal,
-              ]),
+          const SizedBox(
+            height: 30,
+          ),
+          GradientText(
+            " Professional Support ",
+            style: const TextStyle(
+              fontSize: 30,
+            ),
+            colors: const [
+              Colors.blue,
+              Colors.red,
+              Colors.teal,
+            ],
+          ),
           const SizedBox(
             height: 30,
           ),
@@ -38,11 +46,13 @@ class _Sceen5State extends State<Sceen5> {
           ),
           const Center(
             child: Text(
-                " Personalized guidance for your well-being ",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                )),
+              " Personalized guidance for your well-being ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+              ),
+              textAlign: TextAlign.center, // Center text alignment
+            ),
           ),
         ],
       ),
