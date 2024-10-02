@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:shubham_test/onscreen/onboarding_page.dart';
 import 'package:lottie/lottie.dart';
@@ -19,14 +21,14 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(const Duration(seconds: 5), () {});
+    await Future.delayed(const Duration(seconds: 10), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const Wrapper()));
   }
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height; // Get screen height
+   // Get screen height
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -35,26 +37,12 @@ class _SplashState extends State<Splash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center the content
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.3), // Responsive top padding
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Lottie.asset("asset/splash.json"),
+               Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Lottie.asset('asset/bodhi.json'),
                 ),
-              ),
-              GradientText(
-                "Bodhimind",
-                style: const TextStyle(
-                  fontSize: 20,
-                  letterSpacing: 2,
-                  fontWeight: FontWeight.w600,
-                ),
-                colors: const [
-                  Colors.blue,
-                  Colors.red,
-                  Colors.teal,
-                ],
-              ),
+              
+              
             ],
           ),
         ),

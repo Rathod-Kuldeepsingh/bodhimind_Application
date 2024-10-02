@@ -129,6 +129,9 @@ class _SignScreenState extends State<SignScreen> {
       );
     }
   }
+    void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -283,12 +286,13 @@ class _SignScreenState extends State<SignScreen> {
                     width: screenWidth * 0.5, // Adjusted for responsiveness
                     child: OutlinedButton.icon(
                       onPressed: () async {
-                        User? user = await _authService.signInWithGoogle();
-                        if (user != null) {
-                          print('User signed in: ${user.displayName}');
-                        } else {
-                          print('Sign-in failed');
-                        }
+                        User? user = (await _authService.signInWithGoogle()) as User?;
+                            if (user != null) {
+                              _showSnackBar('User signed in: ${user.displayName}');
+                              goTohome(context);
+                            } else {
+                              _showSnackBar('Sign-in failed');
+                            }
                       },
                       icon: const Image(
                         image: AssetImage("asset/google.png"),
