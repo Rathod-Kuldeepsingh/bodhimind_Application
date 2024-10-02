@@ -43,14 +43,13 @@ import 'package:shubham_test/gamecontent/mindpal.dart';
 import 'package:shubham_test/gamecontent/neuronation.dart';
 import 'package:shubham_test/gamecontent/twodots.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
+import 'package:shubham_test/otp_screen/for.dart';
 
 import 'package:shubham_test/professional%20support/prof_support.dart';
 import 'package:shubham_test/profile/profile.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/user_authentication/sign_screen.dart';
 import 'package:shubham_test/onscreen/onboarding_page.dart';
-import 'package:shubham_test/otp_screen/email.dart';
-import 'package:shubham_test/otp_screen/mobile.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 import 'package:shubham_test/splash/splash.dart';
@@ -68,7 +67,7 @@ Future<void> main() async {
 
  
   runApp(MaterialApp(
-    home:    ArtifactListScreen(),
+    home:  const Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
       "/common_problem": (context) =>  Common_problem(),
@@ -77,8 +76,8 @@ Future<void> main() async {
       "/Dashboard": (context) => const DashboardScreen(),
       "/Signpage": (context) =>  const SignScreen(),
       "/Homescreen": (context) => const home_screen(),
-      "/Otpscreen": (context) => const OtpScreen(),
-      "/Otpscreen1": (context) => const OtpScreen1(),
+      "/emailif": (context) => const Emailf(),
+     
     },
   ));
 }

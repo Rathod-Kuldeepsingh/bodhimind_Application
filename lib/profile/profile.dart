@@ -2,10 +2,13 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
+import 'dart:io';
 
 class MyApp extends StatelessWidget {
   @override
@@ -34,6 +37,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   String email = '';
   String status = '';
   String address = '';
+  String profileImageUrl = 'https://example.com/default_image.png'; // Default image URL
   bool isLoading = true;
 
   @override
@@ -58,6 +62,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             email = userData.get('email') ?? user.email ?? '';
             status = userData.get('status') ?? 'No Status Provided';
             address = userData.get('address') ?? 'No Address Provided';
+            profileImageUrl = userData.get('profileImage') ?? profileImageUrl;
             isLoading = false;
           });
         } else {
@@ -78,6 +83,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         'email': user.email,
         'status': 'No Status Provided',
         'address': 'No Address Provided',
+        'profileImage': profileImageUrl,
       });
     } catch (e) {
       print('Error creating user document: $e');
@@ -110,6 +116,36 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     }
   }
 
+  Future<void> pickAndUploadImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      File imageFile = File(pickedFile.path);
+      String fileName = 'profile_images/${FirebaseAuth.instance.currentUser!.uid}.jpg';
+      try {
+        // Upload to Firebase Storage
+        await FirebaseStorage.instance.ref(fileName).putFile(imageFile);
+
+        // Get the download URL
+        String downloadURL = await FirebaseStorage.instance.ref(fileName).getDownloadURL();
+
+        // Save the download URL to Firestore
+        await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).update({
+          'profileImage': downloadURL,
+        });
+
+        setState(() {
+          profileImageUrl = downloadURL;
+        });
+      } catch (e) {
+        print('Error uploading image: $e');
+      }
+    } else {
+      print('No image selected');
+    }
+  }
+
   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
@@ -119,8 +155,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       print('Error signing out: $e');
     }
   }
-
-  final _auth = Authservice();
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +177,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.edit_square),
+            icon: const Icon(Icons.camera_alt),
+            onPressed: pickAndUploadImage,
+          ),
+          IconButton(
+            icon: const Icon(Icons.edit),
             onPressed: () {
               Navigator.push(
                 context,
@@ -172,10 +210,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05, vertical: screenWidth * 0.1),
               child: Column(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 60.0,
-                    backgroundImage: NetworkImage(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s'),
+                    backgroundImage: NetworkImage(profileImageUrl),
                   ),
                   const SizedBox(height: 20.0),
                   Text(
@@ -208,32 +245,24 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   ),
                   const SizedBox(height: 50),
                   Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () async {
-                            await _auth.signOut();
-                            goToLogin(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[300],
-                            padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03, horizontal: screenWidth * 0.1),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            elevation: 5,
-                          ),
-                          child: Text(
-                            "Logout",
-                            style: TextStyle(
-                              fontSize: screenWidth * 0.05,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
+                    child: ElevatedButton(
+                      onPressed: signOut,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue[300],
+                        padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03, horizontal: screenWidth * 0.1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
-                      ],
+                        elevation: 5,
+                      ),
+                      child: Text(
+                        "Logout",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.05,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   )
                 ],
@@ -241,11 +270,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
     );
   }
-
-  goToLogin(BuildContext context) => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
 }
 
 class EditProfileScreen extends StatefulWidget {
@@ -386,4 +410,5 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 }
+
 

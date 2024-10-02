@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:shubham_test/artical/artical.dart';
 import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/book/book.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
@@ -18,9 +19,6 @@ import 'package:shubham_test/common_problem/comm_list.dart';
 import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/game/psychologicalgame.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
-
-import 'package:shubham_test/otp_screen/email.dart';
-import 'package:shubham_test/otp_screen/mobile.dart';
 import 'package:shubham_test/professional%20support/prof_support.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
 // ignore: unused_import
@@ -293,7 +291,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20,bottom: 20),
                     child: Column(
                       children: [
                         CarouselSlider(
@@ -351,8 +349,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ],
                     ),
                   ),
+                
                 ],
-              )
+              ),
+              // Column(
+              //   children: [
+               
+              //   ],
+              // )
             ],
           ),
         ),
