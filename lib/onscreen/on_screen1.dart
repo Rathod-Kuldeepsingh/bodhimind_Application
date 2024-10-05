@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import "package:flutter/material.dart";
 import "package:lottie/lottie.dart";
 import "package:simple_gradient_text/simple_gradient_text.dart";

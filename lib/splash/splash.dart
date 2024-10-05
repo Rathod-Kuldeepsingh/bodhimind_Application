@@ -31,7 +31,7 @@ class _SplashState extends State<Splash> {
    // Get screen height
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -39,7 +39,7 @@ class _SplashState extends State<Splash> {
             children: [
                Padding(
                   padding: const EdgeInsets.all(0),
-                  child: Lottie.asset('asset/bodhi.json'),
+                  child: Lottie.asset('asset/kuldeep.json'),
                 ),
               
               

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, library_private_types_in_public_api, avoid_print, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, library_private_types_in_public_api, avoid_print, use_build_context_synchronously, unused_import
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -243,15 +243,15 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     title: Text(
                         address.isNotEmpty ? address : 'No Address Provided'),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 100),
                   Center(
                     child: ElevatedButton(
                       onPressed: signOut,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue[300],
-                        padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03, horizontal: screenWidth * 0.1),
+                        padding: EdgeInsets.symmetric(vertical: screenWidth * 0.02, horizontal: screenWidth * 0.1),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(40.0),
                         ),
                         elevation: 5,
                       ),
@@ -390,24 +390,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   Widget _buildTextField(TextEditingController controller, String label, [TextInputType inputType = TextInputType.text]) {
-    return TextField(
-      controller: controller,
-      keyboardType: inputType,
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Colors.black),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.0),
-          borderSide: const BorderSide(color: Colors.black),
+      return TextField(
+        controller: controller,
+        keyboardType: inputType,
+        decoration: InputDecoration(
+          labelText: label,
+          labelStyle: const TextStyle(color: Colors.black),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: const BorderSide(color: Colors.black),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: const BorderSide(color: Colors.black, width: 2.0),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.0),
-          borderSide: const BorderSide(color: Colors.black, width: 2.0),
-        ),
-        filled: true,
-        fillColor: Colors.white,
-      ),
-    );
+      );
   }
 }
 

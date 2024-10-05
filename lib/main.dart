@@ -65,19 +65,18 @@ Future<void> main() async {
   // gemini api key
   Gemini.init(apiKey: GEMINI_API_KEY);
 
- 
   runApp(MaterialApp(
-    home:  const Splash(),
+    debugShowCheckedModeBanner: false,
+    home: Splash(),
     routes: {
       "/wrapper": (context) => const Wrapper(),
-      "/common_problem": (context) =>  Common_problem(),
-      "/bottomnavigation": (context) => const Bottomnavigation(),
       "/Loginpage": (context) => const LoginPage(),
+      "/common_problem": (context) => Common_problem(),
+      "/bottomnavigation": (context) => const Bottomnavigation(),
       "/Dashboard": (context) => const DashboardScreen(),
-      "/Signpage": (context) =>  const SignScreen(),
+      "/Signpage": (context) => const SignScreen(),
       "/Homescreen": (context) => const home_screen(),
       "/emailif": (context) => const Emailf(),
-     
     },
   ));
 }
@@ -92,27 +91,32 @@ class home_screen extends StatefulWidget {
 
 // ignore: camel_case_types
 class _home_screenState extends State<home_screen> {
-  final _auth = Authservice();// 
+  final _auth = Authservice(); //
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            const SizedBox(height: 200,),
-           const Center(
+            const SizedBox(
+              height: 200,
+            ),
+            const Center(
                 child: Text(
               "welcome",
               style: TextStyle(fontSize: 40),
             )),
-             IconButton(onPressed: () async{
-                await _auth.signOut();
+            IconButton(
+                onPressed: () async {
+                  await _auth.signOut();
 
-                goToLogin(context);
-             }, icon: const Icon(Icons.login))
+                  goToLogin(context);
+                },
+                icon: const Icon(Icons.login))
           ],
         ));
   }
+
   goToLogin(BuildContext context) => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),

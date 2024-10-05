@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

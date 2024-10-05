@@ -20,7 +20,7 @@ import 'package:shubham_test/user_authentication/login_screen.dart';
 import 'package:shubham_test/main.dart';
 import 'package:shubham_test/otp_screen/otp_s2.dart';
 
-final _formkey = GlobalKey<FormState>();
+// Ensure this is unique
 
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
@@ -30,6 +30,8 @@ class SignScreen extends StatefulWidget {
 }
 
 class _SignScreenState extends State<SignScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final UserService _userService = UserService();
   final AuthService _authService = AuthService(); // Google authentication
@@ -45,9 +47,7 @@ class _SignScreenState extends State<SignScreen> {
         email: _email.text,
         password: _password.text,
       );
-      if (user != null) {
-        goTohome(context);
-      }
+      goTohome(context);
 
       // Uncomment to add user details to Firestore
       // await FirebaseFirestore.instance.collection('users').add({
@@ -57,21 +57,23 @@ class _SignScreenState extends State<SignScreen> {
       //   'password': _password.text,
       // });
 
-      // Navigate to profile page or show success message
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('User registered!')));
+      // Show success message
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('User registered!')));
     } catch (e) {
       print("Error: $e");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error: $e')));
     }
   }
 
   @override
   void dispose() {
-    super.dispose();
     _email.dispose();
     _password.dispose();
     _mobile.dispose();
     _fullname.dispose();
+    super.dispose(); // Call super at the end
   }
 
   String? validateEmail(String? email) {
@@ -122,15 +124,14 @@ class _SignScreenState extends State<SignScreen> {
   }
 
   void _submitForm() {
-    if (_formkey.currentState!.validate()) {
-      // Process the sign-up (e.g., send data to the server)
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Account Created Successfully')),
-      );
+    if (_formKey.currentState!.validate()) {
+      _registerUser(context); // Call only if the form is valid
     }
   }
-    void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -142,7 +143,7 @@ class _SignScreenState extends State<SignScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Form(
-            key: _formkey,
+            key: _formKey, // Use the unique form key here
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,10 +256,7 @@ class _SignScreenState extends State<SignScreen> {
                     child: SizedBox(
                       width: screenWidth * 0.5, // Adjusted for responsiveness
                       child: ElevatedButton(
-                        onPressed: () {
-                          _submitForm();
-                          _registerUser(context);
-                        },
+                        onPressed: _submitForm, // Call _submitForm directly
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                         ),
@@ -286,13 +284,13 @@ class _SignScreenState extends State<SignScreen> {
                     width: screenWidth * 0.5, // Adjusted for responsiveness
                     child: OutlinedButton.icon(
                       onPressed: () async {
-                        User? user = (await _authService.signInWithGoogle()) as User?;
-                            if (user != null) {
-                              _showSnackBar('User signed in: ${user.displayName}');
-                              goTohome(context);
-                            } else {
-                              _showSnackBar('Sign-in failed');
-                            }
+                        User? user = (await _authService.signInWithGoogle());
+                        if (user != null) {
+                          _showSnackBar('User signed in: ${user.displayName}');
+                          goTohome(context);
+                        } else {
+                          _showSnackBar('Sign-in failed');
+                        }
                       },
                       icon: const Image(
                         image: AssetImage("asset/google.png"),
@@ -314,15 +312,17 @@ class _SignScreenState extends State<SignScreen> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/Loginpage");
+                          Navigator.pushNamed(context, '/Loginpage');
                         },
                         child: const Text.rich(TextSpan(children: [
                           TextSpan(
                               text: "Already have an Account?",
-                              style: TextStyle(color: Colors.black, fontSize: 17)),
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 17)),
                           TextSpan(
                               text: " Login",
-                              style: TextStyle(color: Colors.blue, fontSize: 17)),
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 17)),
                         ])),
                       ),
                     ],

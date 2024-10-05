@@ -8,8 +8,6 @@ import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/dash/bottomnavigation.dart';
 import 'package:shubham_test/otp_screen/otp_s1.dart';
 
-final _formKey = GlobalKey<FormState>();
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -18,6 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey1 = GlobalKey<FormState>();
+
   final Authservice _authService = Authservice(); // Google authentication
   final Authservice _auth = Authservice(); // Email and password authentication
 
@@ -42,10 +42,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _login() async {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey1.currentState!.validate()) {
       try {
         // Attempt to sign in the user
-        User? user = await _auth.loginUserWithEmailAndPassword(_email.text, _password.text);
+        User? user = await _auth.loginUserWithEmailAndPassword(
+            _email.text, _password.text);
         if (user != null) {
           // If successful, navigate to home
           _showSnackBar("Account Login Successfully");
@@ -65,7 +66,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -77,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Form(
-            key: _formKey,
+            key: _formKey1,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "Welcome Back!",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
@@ -107,7 +110,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "Make it work, Make it right, Make it fast",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
@@ -120,9 +124,11 @@ class _LoginPageState extends State<LoginPage> {
                       TextFormField(
                         controller: _email,
                         decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.person_outline_outlined, size: 25),
+                          prefixIcon: const Icon(Icons.person_outline_outlined,
+                              size: 25),
                           labelText: "Email",
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
                         ),
                         validator: validateEmail,
                       ),
@@ -139,19 +145,23 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.fingerprint, size: 25),
                           labelText: "Password",
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)),
                           suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
                                 _isVisible = !_isVisible;
                               });
                             },
-                            icon: Icon(_isVisible ? Icons.remove_red_eye : Icons.visibility_off),
+                            icon: Icon(_isVisible
+                                ? Icons.remove_red_eye
+                                : Icons.visibility_off),
                           ),
                         ),
-                        validator: (password) => (password != null && password.length < 8)
-                            ? 'Please enter a valid password'
-                            : null,
+                        validator: (password) =>
+                            (password != null && password.length < 8)
+                                ? 'Please enter a valid password'
+                                : null,
                       ),
                     ],
                   ),
@@ -164,7 +174,8 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: const Column(
                       children: [
-                        Text("Forget Password?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                        Text("Forget Password?",
+                            style: TextStyle(fontSize: 14, color: Colors.blue)),
                       ],
                     ),
                   ),
@@ -178,8 +189,13 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           ElevatedButton(
                             onPressed: _login,
-                            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                            child: const Text("Login", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue),
+                            child: const Text("Login",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white)),
                           ),
                         ],
                       ),
@@ -194,16 +210,22 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         OutlinedButton.icon(
                           onPressed: () async {
-                            User? user = (await _authService.loginWithGoogle()) as User?;
+                            User? user = (await _authService.loginWithGoogle());
                             if (user != null) {
-                              _showSnackBar('User signed in: ${user.displayName}');
+                              _showSnackBar(
+                                  'User signed in: ${user.displayName}');
                               goToHome(context);
                             } else {
                               _showSnackBar('Sign-in failed');
                             }
                           },
-                          icon: const Image(image: AssetImage("asset/google.png"), width: 30),
-                          label: const Text("Sign In With Google", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black)),
+                          icon: const Image(
+                              image: AssetImage("asset/google.png"), width: 30),
+                          label: const Text("Sign In With Google",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black)),
                         ),
                       ],
                     ),
@@ -217,7 +239,8 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           Navigator.pushNamed(context, "/Signpage");
                         },
-                        child: const Text("Create a new Account?", style: TextStyle(fontSize: 14, color: Colors.blue)),
+                        child: const Text("Create a new Account?",
+                            style: TextStyle(fontSize: 14, color: Colors.blue)),
                       ),
                     ],
                   ),

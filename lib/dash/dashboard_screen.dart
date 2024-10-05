@@ -1,12 +1,8 @@
-// ignore: unused_import
-// ignore_for_file: unused_import, duplicate_ignore
+// ignore_for_file: unused_import, unused_field
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// ignore: unused_import
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -15,14 +11,10 @@ import 'package:shubham_test/auth/authen.dart';
 import 'package:shubham_test/book/book.dart';
 import 'package:shubham_test/chatbot/chatscreen.dart';
 import 'package:shubham_test/common_problem/comm_list.dart';
-// ignore: unused_import
-import 'package:shubham_test/dash/h.dart';
 import 'package:shubham_test/game/psychologicalgame.dart';
 import 'package:shubham_test/guided_exe.dart/video.dart';
 import 'package:shubham_test/professional%20support/prof_support.dart';
 import 'package:shubham_test/user_authentication/login_screen.dart';
-// ignore: unused_import
-import 'package:shubham_test/main.dart';
 import 'package:shubham_test/user_authentication/sign_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -33,11 +25,9 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  // ignore: unused_field
   final _auth = Authservice();
 
-  List name = [
-    //"Resources Library",
+  List<String> name = [
     "Common Problem",
     "Professional Support",
     "Guided Exercises",
@@ -45,47 +35,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "Maitreya Chatbot",
   ];
 
-  List<Color> colors = [
-    // const  Color(0xFF33C4FF),
-    // const Color.fromARGB(255, 244, 59, 59),
-    // const  Color(0xFF334DFF),
-    // const  Color(0xFFFFDC33),
-    // const  Color(0xFFBAFF33),
-    // const  Color(0xFF33FFE4),
-  ];
-
   List<Image> icons = [
-    // Image.asset(
-    //   'asset/online-library.png',
-    //   width: 78,
-    // ),
     Image.asset('asset/strain.png', fit: BoxFit.cover),
-    Image.asset(
-      'asset/support.png',
-      width: 78,
-    ),
-    Image.asset(
-      'asset/hinduist-yoga-position.png',
-      width: 80,
-    ),
-    Image.asset(
-      'asset/joystick.png',
-      width: 78,
-    ),
-    Image.asset(
-      'asset/robot-assistant.png',
-      width: 78,
-    ),
+    Image.asset('asset/support.png', width: 78),
+    Image.asset('asset/hinduist-yoga-position.png', width: 80),
+    Image.asset('asset/joystick.png', width: 78),
+    Image.asset('asset/robot-assistant.png', width: 78),
   ];
 
-  List categoriesscreen = [
-    // const Loginpage(),
+  List<Widget> categoriesscreen = [
     Common_problem(),
     const ProfSupport(),
     const VideoListScreen(),
     const PsychologicalGame(),
-    const HomePage()
+    const HomePage(),
   ];
+
   List<String> imgList = [
     'asset/JK.png',
     'asset/OSho.png',
@@ -95,12 +60,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
     'asset/AG.png'
   ];
 
-  // ignore: unused_field
   int _currentIndex = 0;
+  String searchText = "";
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+
+    // Filter categories based on search text
+    List<String> filteredNames = name
+        .where((category) => category.toLowerCase().contains(searchText.toLowerCase()))
+        .toList();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -114,10 +84,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: [],
                 ),
               ),
-              // second column
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,7 +92,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Text("Hello,",
+                        Text("Hello",
                             style: GoogleFonts.archivo(
                                 textStyle: const TextStyle(
                                     fontSize: 22,
@@ -136,8 +103,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   )
                 ],
               ),
-              //third column
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -156,49 +121,49 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   )
                 ],
               ),
-              // fourth column
+              SizedBox(height: 30,),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: screenWidth * 0.9, // Adjusted for responsiveness
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30), // Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  blurRadius: 6,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
+                  SizedBox(
+                    width: screenWidth * 0.9,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                            child: const TextField(
-                              // controller: searchController,
-                              //   onChanged: _filterCategories,
-                              decoration: InputDecoration(
-                                hintText: 'Search here',
-                                hintStyle: TextStyle(color: Colors.black),
-                                border: InputBorder.none, // Remove borders
-                                contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                suffixIcon: Icon(Icons.search, color: Colors.blue), // Custom search icon
-                              ),
-                            ),
+                          ],
+                        ),
+                        child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              searchText = value;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search here',
+                            hintStyle: TextStyle(color: Colors.black),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                            suffixIcon: Icon(Icons.search, color: Colors.blue),
                           ),
                         ),
                       ),
-                    ],
-                  )
+                    ),
+                  ),
                 ],
-              )
-              // five column
-              ,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               Column(
                 children: [
                   Row(
@@ -224,54 +189,56 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GridView.builder(
-                      itemCount: name.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1.2,
-                              crossAxisSpacing: 0,
-                              mainAxisSpacing: 10),
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      categoriesscreen[index])),
-                          child: Card(
-                            color: Colors.white,
-                            elevation: 5,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  child: Container(
-                                    height: 110,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Center(
-                                      child: icons[index],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15,right: 15),
+                      child: GridView.builder(
+                        itemCount: filteredNames.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 20),
+                                
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        categoriesscreen[name.indexOf(filteredNames[index])])),
+                            child: Card(
+                              color: Colors.white,
+                              elevation: 5,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    child: Container(
+                                      height: 110,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Center(
+                                        child: icons[name.indexOf(filteredNames[index])],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  name[index],
-                                  style: const TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.w500),
-                                  textAlign: TextAlign.justify,
-                                ),
-                              ],
+                                  const SizedBox(height: 20),
+                                  Text(
+                                    filteredNames[index],
+                                    style: const TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.w500),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -291,7 +258,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20,bottom: 20),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
                     child: Column(
                       children: [
                         CarouselSlider(
@@ -307,8 +274,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           items: imgList.map((item) {
                             return Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              margin: const EdgeInsets.symmetric(horizontal: 10.0),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -325,38 +291,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           }).toList(),
                         ),
                         const SizedBox(height: 10),
-                        //this for smooth indicator
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: imgList.asMap().entries.map((entry) {
-                        //     return GestureDetector(
-                        //       onTap: () => setState(() {
-                        //         _currentIndex = entry.key;
-                        //       }),
-                        //       child: Container(
-                        //         width: 20.0,
-                        //         height: 10.0,
-                        //         margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 4.0),
-                        //         decoration: BoxDecoration(
-                        //           shape: BoxShape.circle,
-                        //           color: Colors.black
-                        //               .withOpacity(_currentIndex == entry.key ? 1 : 0.4),
-                        //         ),
-                        //       ),
-                        //     );
-                        //   }).toList(),
-                        // ),
                       ],
                     ),
                   ),
-                
                 ],
               ),
-              // Column(
-              //   children: [
-               
-              //   ],
-              // )
             ],
           ),
         ),
@@ -381,8 +320,4 @@ class _DashboardScreenState extends State<DashboardScreen> {
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
       );
-  // goTohome(BuildContext context) => Navigator.push(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const ()),
-  //     );
 }
